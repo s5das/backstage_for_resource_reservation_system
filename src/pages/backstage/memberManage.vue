@@ -17,15 +17,19 @@
     </div>
   </template>
   <script setup>
-  import {ref} from 'vue'
+
+
   let status = ref('职能部门')
+
   const handdle = (num)=>{
       switch(num){
-          case 1: status.value = '职能部门';break;
-          case 2: status.value = '书院/学院';break;
-          case 3: status.value = '学生组织/工作室';break;
+          case 1: status.value = '职能部门';break; //id  "1582214160136019970"
+          case 2: status.value = '书院/学院';break; //id "1582214270727233537"
+          case 3: status.value = '学生组织/工作室';break;//id "1582217355755270145"
       }
   }
+
+
   </script>
   
   <style scoped lang="less">

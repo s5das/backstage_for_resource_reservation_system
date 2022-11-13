@@ -12,10 +12,10 @@
 </template>
 
 <script setup>
-let info = {
+let info = reactive({
   ico: new URL("../assets/customer.png", import.meta.url).href,
   name: "gaofei",
-};
+});
 </script>
 
 <style lang="less" scoped>

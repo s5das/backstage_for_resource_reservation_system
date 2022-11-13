@@ -39,25 +39,35 @@ const router = createRouter({
         {
           path: "membermanage",
           component: () => import("@/pages/backstage/memberManage.vue"),
-          redirect:'/backstage/membermanage/department',
+          redirect: "/backstage/membermanage/department",
           children: [
             {
               path: "department",
-              component: () => import ("@/pages/backstage/memberManage/department.vue"),
+              component: () =>
+                import("@/pages/backstage/memberManage/department.vue"),
             },
             {
               path: "college",
-              component: () => import ("@/pages/backstage/memberManage/college.vue"),
+              component: () =>
+                import("@/pages/backstage/memberManage/college.vue"),
             },
             {
               path: "organization",
-              component: () => import ("@/pages/backstage/memberManage/organization.vue"),
+              component: () =>
+                import("@/pages/backstage/memberManage/organization.vue"),
             },
           ],
         },
         {
           path: "meetingRoomManage",
           component: () => import("@/pages/backstage/meetingRoomManage.vue"),
+          children: [
+            {
+              path: "mainpage/:id",
+              component: () =>
+                import("@/pages/backstage/meetingRoomManage/mainPage.vue"),
+            },
+          ],
         },
       ],
     },

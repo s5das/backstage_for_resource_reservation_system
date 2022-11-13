@@ -68,25 +68,29 @@ export const rmovePic = (id,url)=>{
 }
 
 // ???
-export const uploadPic = () =>{
+export const uploadPic = (file) =>{
+    let fomdata = new FormData()
+    fomdata.append('file',file)
     return serviceAxios({
         method:'post',
         url:'/admin/room/avatar/upload',
+        data:fomdata
     })
 }
 
-export const modifyInfoById = (id) => {
+export const getModifyInfoById = (id) => {
     return serviceAxios({
         method:'get',
         url:`/admin/room/getDto/${id}`
     })
 }
 
-export const modifyMessage = (id,otherInfo) => {
+export const modifyMessage = (avatars,id,otherInfo) => {
     return serviceAxios({
         method:'put',
         url:'/admin/room/update',
-        params:{
+        data:{
+            avatars,
             id,
             otherInfo
         }

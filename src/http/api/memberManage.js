@@ -57,6 +57,7 @@ export const getPartmentDetail = (id, name) => {
 
 export const addPartmentmember = (departmentId, mobile, userId, userName) => {
   return serviceAxios({
+    url:'/admin/user/add',
     method: "post",
     data: {
       departmentId,
@@ -70,7 +71,7 @@ export const addPartmentmember = (departmentId, mobile, userId, userName) => {
 export const modifyIsDisabled = (id) => {
   return serviceAxios({
     method: "put",
-    url: `/admin/user/disable/${id}`,
+    url: `/admin/user/disabled/${id}`,
   });
 };
 
@@ -78,7 +79,7 @@ export const modifyMemberInfo = (id, mobile, userId, userName) => {
   return serviceAxios({
     method: "put",
     url: "/admin/user/update",
-    data: {},
+    data: {id,mobile,userId,userName},
   });
 };
 
@@ -91,14 +92,13 @@ export const removeMember = (id) => {
 
 export const getInfoByPage = (
   page,
-  limit,
   departmentTypeId,
   departmentName,
   name
 ) => {
   return serviceAxios({
     method: "get",
-    url: `/admin/department/list/${page}/${limit}`,
+    url: `/admin/department/list/${page}/${10}`,
     params: {
       departmentTypeId,
       departmentName,

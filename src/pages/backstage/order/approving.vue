@@ -4,6 +4,7 @@
     <el-table
       :data="tableData"
       style="width: 100%"
+      height="500"
     >
       <el-table-column property="orderNo" label="预约单号" width="180" />
       <el-table-column
@@ -138,16 +139,10 @@ onMounted(() => {
 
 <style lang="less" scoped>
 
-.serch-area {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  padding-left: 15px;
-  padding-top: 15px;
-}
 .pagecontroler {
   position: fixed;
-  bottom: 80px;
+  bottom: 20px;
   left: 850px;
 }
+
 </style>
