@@ -106,7 +106,7 @@
               <div>预约次数：{{times3}} 履约次数：{{times2}} 违约次数：{{times1}}</div>
             </el-col>
             <el-col :span="6" :offset="6">
-              <el-button type="primary" size="default" @click="show2 = false"
+              <el-button type="primary" size="default" @click="emits('close')"
                 >取消</el-button
               >
               <el-button type="primary" size="default" @click="save()"
@@ -162,7 +162,7 @@
                 <el-input v-model="add_form.mobile"></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button @click="show3 = false">取消</el-button>
+                <el-button @click="show3.value = false">取消</el-button>
                 <el-button type="primary" @click="save_manage">保存</el-button>
               </el-form-item>
             </el-form>
