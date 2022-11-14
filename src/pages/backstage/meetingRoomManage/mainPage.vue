@@ -53,7 +53,7 @@
       </div>
       <div class="info_right">
         <div class="status">
-          <el-switch v-model="status" @change="changeStatus"></el-switch>
+          预约状态：<el-switch v-model="status" @change="changeStatus"></el-switch>
         </div>
         <div style="display: flex">
           <el-button type="primary" size="default" @click="edit"
@@ -273,6 +273,8 @@ getTableInfo();
 }
 .show-area {
   margin-top: 100px;
+  height: 600px;
+  overflow: scroll;
 }
 .mask {
   background-color: rgba(0, 0, 0, 0.5);
