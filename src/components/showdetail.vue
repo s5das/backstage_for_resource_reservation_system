@@ -86,7 +86,7 @@
               <div class="a">
                 <el-image
                   style="width: 100px; height: 100px"
-                  :src="url"
+                  :src="item2.avatar"
                   fit="fill"
                   :lazy="true"
                 >
@@ -118,7 +118,7 @@
                       width: 200px;
                     "
                   >
-                    地点：{{ "fsda" }}
+                    地点：{{ item2.buildingName }}
                   </div>
                   <div
                     style="
@@ -128,17 +128,17 @@
                       width: 200px;
                     "
                   >
-                    开放时间: {{ "lalalla" }}
+                    开放时间: {{ item2.openTime +'-'+ item2.closeTime }}
                   </div>
                 </div>
               </div>
             </div>
             <div class="right-2">
-              <div>可容纳人数：{{ "10 - 18" }}人</div>
-              <div>投影：{{ "提供投影" }}</div>
-              <div>电脑：{{ "提供电脑" }}</div>
-              <div>WiFi:{{ "提供WiFi" }}</div>
-              <div>其他信息：{{ "无" }}</div>
+              <div>可容纳人数：{{ item2.capacity }}人</div>
+              <div>投影：{{ item2.hasProjector?"提供投影":"不提供投影" }}</div>
+              <div>电脑：{{ item2.hasComputer?"提供电脑": "不提供电脑"}}</div>
+              <div>WiFi:{{ item2.hasWifi?"提供WiFi":"不提供WiFi" }}</div>
+              <div>其他信息：{{ item2.otherInfo||"无" }}</div>
             </div>
             <div class="right-3">
               <div>是否取消</div>
@@ -168,10 +168,9 @@
 <script setup>
 import { CloseBold, Picture as IconPicture } from "@element-plus/icons-vue";
 import { getDetail, pass, save, cancel } from "../http/api/order";
-
+import {getInfoById} from "../http/api/meetingRoom"
 const emits = defineEmits(["close",'refresh']);
-const props = defineProps(["status", "showpass", "showreject", "id"]);
-let url = new URL("../assets/customer.png", import.meta.url).href;
+const props = defineProps(["status", "showpass", "showreject", "id","meetingRoomId"]);
 let textarea1 = ref("");
 let textarea2 = ref("");
 let textarea3 = ref("");
@@ -235,13 +234,17 @@ const rejectItem = ()=>{
   )
 }
 
-
+let item2 = ref({})
 onMounted(() => {
   getDetail(props.id).then((res) => {
     item.value = res.item;
     textarea2.value = res.item.adminOtherInfo
     textarea3.value = res.item.cancelReason
   });
+  getInfoById(props.meetingRoomId).then((res)=>{
+    item2.value = res.item
+    
+  })
 });
 </script>
 

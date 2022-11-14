@@ -26,7 +26,7 @@ let info = reactive({
   }
 
   .right{
-    flex: 8;
+    flex:9;
   }
 }
 </style>

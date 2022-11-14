@@ -6,7 +6,7 @@
       style="width: 100%"
       height="500"
     >
-      <el-table-column property="orderNo" label="预约单号" width="180" />
+      <el-table-column property="orderNo" label="预约单号" width="170" />
       <el-table-column
         property="createTime"
         label="发起时间"
@@ -60,7 +60,7 @@
     </el-table>
 
   </div>
-  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :showpass="true" :showreject="true" />
+  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="true" :showreject="true" />
   <div class="pagecontroler">
     <el-pagination
       background
@@ -124,7 +124,9 @@ const getinfo = () => {
 };
 
 let orderId = ref('')
+let meetingRoomId = ref('')
 const getdetail = (data)=>{
+  meetingRoomId.value = data.row.roomId
   orderId.value = data.row.id
   isshow.value = true
 }

@@ -89,7 +89,7 @@
               <el-form-item >
                 <el-button type="primary" size="small" @click="onSearch"
                   >查询</el-button
-                >
+                >   
               </el-form-item>
             </el-col>
             <el-col :span="3" :offset="0">
@@ -238,7 +238,8 @@ getinfo();
     background-color: #f0f0f2;
   }
   .right {
-    flex: 11;
+    flex: 12;
+    overflow-x: hidden;
     padding: 10px;
   }
 }
