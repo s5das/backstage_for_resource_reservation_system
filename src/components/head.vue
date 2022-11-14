@@ -2,12 +2,12 @@
   <div class="main">
     <div class="title">会议室预约系统后台</div>
     <div class="info">
-      <div class="ico">
+      <!-- <div class="ico">
         <img :src="info.ico" />
       </div>
       <div class="name">
         {{ info.name }}
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
