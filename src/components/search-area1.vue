@@ -1,7 +1,7 @@
 <template>
   <div class="serch-area">
     <div>
-      <el-form :inline="true" class="demo-form-inline" ref="form">
+      <el-form :inline="true" :model="formInline" class="demo-form-inline" ref="form" >
         <div style="display: flex">
           <div class="item">
             <el-form-item label="预约人" prop="name">
