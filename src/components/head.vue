@@ -22,7 +22,6 @@ console.log(props);
 <style lang="less" scoped>
 .main {
   height: 90px;
-  width: 100%;
   background-color:#2468a9 ;
   display: flex;
   justify-content: space-between;

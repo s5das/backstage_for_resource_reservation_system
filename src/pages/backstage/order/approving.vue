@@ -12,7 +12,7 @@
         label="发起时间"
         width="180"
       />
-      <el-table-column property="username" label="预约人" width="120" />
+      <el-table-column property="username" label="预约人" width="100" />
       <el-table-column property="mobile" label="联系方式" width="150" />
       <el-table-column
         property="useDepartmentName"

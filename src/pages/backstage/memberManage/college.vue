@@ -230,6 +230,9 @@ getinfo();
 </script>
 
 <style lang="less" scoped>
+.table-area{
+   overflow-x: hidden;
+}
 .serch-area {
   height: 70px;
   display: flex;

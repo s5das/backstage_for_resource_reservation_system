@@ -133,5 +133,6 @@ onMounted(() => {
   position: fixed;
   bottom: 80px;
   left: 850px;
+  
 }
 </style>

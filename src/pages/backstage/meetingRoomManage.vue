@@ -14,8 +14,8 @@
     <div class="right">
       <div class="top">
         <el-form :model="form" label-width="80px" size="small" ref="formref">
-          <el-row>
-            <el-col :span="3" :offset="0">
+          <div style="display: flex">
+            <div class="search-item">
               <el-form-item label="容纳人数" prop="capacity">
                 <el-select v-model="form.capacity">
                   <el-option
@@ -27,8 +27,8 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="0">
+            </div>
+            <div class="search-item">
               <el-form-item label="投影">
                 <el-select v-model="form.hasProjector">
                   <el-option
@@ -40,8 +40,8 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="0">
+            </div>
+            <div class="search-item">
               <el-form-item label="电脑">
                 <el-select v-model="form.hasComputer">
                   <el-option
@@ -53,8 +53,8 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="0">
+            </div>
+            <div class="search-item">
               <el-form-item label="WIFI">
                 <el-select v-model="form.hasWifi">
                   <el-option
@@ -66,8 +66,8 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="0">
+            </div>
+            <div class="search-item">
               <el-form-item label="电源板">
                 <el-select v-model="form.hasPowerStrip">
                   <el-option
@@ -79,30 +79,29 @@
                   </el-option>
                 </el-select>
               </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="0">
+            </div>
+            <div class="search-item">
               <el-form-item label="会议室名称">
-                  <el-input v-model="form.roomName" ></el-input>
+                <el-input v-model="form.roomName"></el-input>
               </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="0">
-              <el-form-item >
+            </div>
+            <div class="search-item">
+              <el-form-item>
                 <el-button type="primary" size="small" @click="onSearch"
                   >查询</el-button
-                >   
+                >
               </el-form-item>
-            </el-col>
-            <el-col :span="3" :offset="0">
-                <el-date-picker
-                    v-model="time"
-                    type="date"
-                    value-format="YYYY-MM-DD"
-                    placeholder="选择时间"
-                    @change="change"
-                />
-            </el-col>
-            
-          </el-row>
+            </div>
+            <div class="search-item">
+              <el-date-picker
+                v-model="time"
+                type="date"
+                value-format="YYYY-MM-DD"
+                placeholder="选择时间"
+                @change="change"
+              />
+            </div>
+          </div>
         </el-form>
       </div>
       <router-view></router-view>
@@ -203,27 +202,26 @@ let form = reactive({
   hasWifi: false,
 });
 
+const onSearch = () => {
+  search_name = form.roomName;
+  search_capacity = form.capacity;
+  search_hasComputer = form.hasComputer;
+  search_hasPowerStrip = form.hasPowerStrip;
+  search_hasProjector = form.hasProjector;
+  search_hasWifi = form.hasWifi;
+  getinfo();
+};
 
+let time = ref(
+  new Date().getFullYear() +
+    "-" +
+    (new Date().getMonth() + 1) +
+    "-" +
+    new Date().getDate()
+);
+provide("time", time);
 
-const onSearch = ()=>{
-search_name = form.roomName;
-search_capacity = form.capacity;
-search_hasComputer = form.hasComputer;
-search_hasPowerStrip = form.hasPowerStrip;
-search_hasProjector = form.hasProjector;
-search_hasWifi = form.hasWifi;
-getinfo()
-}
-
-
-
-let time = ref(new Date().getFullYear() + '-' + (new Date().getMonth() + 1) +'-'+new Date().getDate())
-provide('time',time)
-
-
-const change = ()=>{
-    
-}
+const change = () => {};
 
 getinfo();
 </script>
@@ -238,9 +236,12 @@ getinfo();
     background-color: #f0f0f2;
   }
   .right {
-    flex: 12;
+    flex: 9;
     overflow-x: hidden;
     padding: 10px;
+  }
+  .search-item {
+    flex: 1;
   }
 }
 </style>

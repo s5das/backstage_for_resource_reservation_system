@@ -22,10 +22,12 @@ let info = reactive({
 .content {
   display: flex;
   .left {
+    min-width: 0;
     flex: 1;
   }
 
   .right{
+    min-width: 0;
     flex:9;
   }
 }
