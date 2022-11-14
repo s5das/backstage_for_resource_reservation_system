@@ -7,7 +7,7 @@
         </el-breadcrumb>
       </div>
       <div class="menu">
-        <el-menu mode="horizontal" default-active="/order/approving" router>
+        <el-menu mode="horizontal" default-active="/backstage/order/approving" router>
           <el-menu-item index="/backstage/membermanage/department" @click="handdle(1)">职能部门</el-menu-item>
           <el-menu-item index="/backstage/membermanage/college" @click="handdle(2)">书院/学院</el-menu-item>
           <el-menu-item index="/backstage/membermanage/organization" @click="handdle(3)">学生组织/工作室</el-menu-item>

@@ -7,7 +7,7 @@
       </el-breadcrumb>
     </div>
     <div class="menu">
-      <el-menu mode="horizontal" default-active="/order/approving" router>
+      <el-menu mode="horizontal" default-active="/backstage/order/approving" router>
         <el-menu-item index="/backstage/order/approving" @click="handdle(1)">待审核</el-menu-item>
         <el-menu-item index="/backstage/order/using" @click="handdle(2)">待使用</el-menu-item>
         <el-menu-item index="/backstage/order/completed" @click="handdle(3)">已完成</el-menu-item>
