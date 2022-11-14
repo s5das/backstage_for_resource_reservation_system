@@ -4,9 +4,9 @@
   <div class="table-area" style="padding-left: 20px">
     <el-table :data="tableData" style="width: 100%" height="480">
       <el-table-column property="departmentName" label="组织名称" width="200" />
-      <el-table-column property="timesSum" label="预约次数" width="170" />
-      <el-table-column property="timesFail" label="违约次数" width="170" />
-      <el-table-column property="memberNum" label="绑定成员数" width="180" />
+      <el-table-column property="timesSum" label="预约次数" width="100" />
+      <el-table-column property="timesFail" label="违约次数" width="100" />
+      <el-table-column property="memberNum" label="绑定成员数" width="100" />
       <el-table-column property="isDisabled" label="组织预约权限" width="250">
         <template #default="scope">
           <el-switch
@@ -231,7 +231,9 @@ getinfo();
 
 <style lang="less" scoped>
 .table-area{
-   overflow-x: hidden;
+   height: 400px;
+   overflow-y: scroll;
+
 }
 .serch-area {
   height: 70px;
@@ -242,8 +244,12 @@ getinfo();
 }
 .pagecontroler {
   position: fixed;
-  bottom: 30px;
-  left: 850px;
+  width: 100px;
+  height: 30px;
+  bottom: 20px;
+  left: 0;
+  margin: auto;
+  right: 0;
 }
 .mask{
   position: fixed;

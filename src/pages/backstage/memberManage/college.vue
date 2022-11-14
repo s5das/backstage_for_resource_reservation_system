@@ -231,7 +231,8 @@ getinfo();
 
 <style lang="less" scoped>
 .table-area{
-   overflow-x: hidden;
+   height: 400px;
+   overflow-y: scroll;
 }
 .serch-area {
   height: 70px;
@@ -242,8 +243,12 @@ getinfo();
 }
 .pagecontroler {
   position: fixed;
+  width: 100px;
+  height: 30px;
   bottom: 30px;
-  left: 850px;
+  margin: auto;
+  left: 0;
+  right: 0;
 }
 .mask{
   position: fixed;

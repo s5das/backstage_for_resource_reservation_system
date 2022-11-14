@@ -131,7 +131,15 @@ onMounted(() => {
 }
 .pagecontroler {
   position: fixed;
-  bottom: 80px;
-  left: 850px;
+  width: 100px;
+  height: 30px;
+  bottom: 30px;
+  left: 0;
+  margin: auto;
+  right: 0;
+}
+.table-area{
+  height: 400px;
+  overflow-y: scroll;
 }
 </style>
