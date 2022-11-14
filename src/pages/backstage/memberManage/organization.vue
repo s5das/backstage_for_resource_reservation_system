@@ -7,7 +7,7 @@
       <el-table-column property="timesSum" label="预约次数" width="100" />
       <el-table-column property="timesFail" label="违约次数" width="100" />
       <el-table-column property="memberNum" label="绑定成员数" width="100" />
-      <el-table-column property="isDisabled" label="组织预约权限" width="250">
+      <el-table-column property="isDisabled" label="禁止组织预约" width="250">
         <template #default="scope">
           <el-switch
             :model-value="scope.row ? scope.row.isDisabled : false"

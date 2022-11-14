@@ -69,7 +69,7 @@
             >
             </el-table-column>
 
-            <el-table-column label="预约权限" width="150">
+            <el-table-column label="禁止预约" width="150">
               <template #default="scope">
                 <el-switch
                   :model-value="scope.row ? scope.row.isDisabled : false"
