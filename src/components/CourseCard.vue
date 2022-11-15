@@ -54,7 +54,7 @@ export default {
   padding: 4px 6px;
   font-size: 12px;
   transition: all 170ms;
-  overflow: hidden;
+  overflow: scroll;
 }
 .course-content .actions {
   display: none;
