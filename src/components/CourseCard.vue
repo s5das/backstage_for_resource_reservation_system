@@ -45,6 +45,10 @@ export default {
 };
 </script>
 <style scoped>
+::-webkit-scrollbar {
+  display: none;
+}
+
 .course-content {
   position: relative;
   background-color: #3f51b5;
@@ -54,7 +58,7 @@ export default {
   padding: 4px 6px;
   font-size: 12px;
   transition: all 170ms;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .course-content .actions {
   display: none;
