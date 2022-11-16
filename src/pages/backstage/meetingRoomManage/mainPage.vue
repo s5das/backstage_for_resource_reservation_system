@@ -200,6 +200,7 @@ const handlePictureCardPreview = (uploadFile) => {
 const getTableInfo = () => {
   getOrder(id, time.value).then((res) => {
     console.log(res);
+    courses.splice(0,courses.length)
     for (let i = 0; i < res.items.length; i++) {
       let list = res.items[i].list;
       for (let j = 0; j < list.length; j++) {
@@ -211,7 +212,6 @@ const getTableInfo = () => {
         list[j].endTime.forEach((element, index, arr) => {
           arr[index] = parseInt(element);
         });
-        courses.splice(0,courses.length)
         courses.push({
           username: list[j].username,
           useDepartmentName: list[j].useDepartmentName,
