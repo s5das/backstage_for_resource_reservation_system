@@ -29,14 +29,28 @@ serviceAxios.interceptors.response.use(
   (res) => {
     if(res.data.success){
       return res.data.data
-    }else{
+    }
+    else if(res.data.code == 22222){
+      // login timeout
+      ElMessage({
+        message: '登录超时，请重新登录',
+        type: 'warning',
+      })
+      setTimeout(() => {
+        localStorage.clear()
+        // 获取协议
+        const handler = window.location.href.split(':')[0]
+        window.location.href = handler + "://" + window.location.host 
+      }, 1000);
+    }
+    else{
       ElMessage({
         message:res.data.message,
         type:'warning'
       })
       return  Promise.reject(new Error(res.data.message))
     }
-
+    
   },
   (error) => {
     let message = "";
@@ -50,16 +64,7 @@ serviceAxios.interceptors.response.use(
           break;
         case 401:
           message = "您未登录，或者登录已经超时，请先登录！";
-          ElMessage({
-            message: '登录超时，请重新登录',
-            type: 'warning',
-          })
-          setTimeout(() => {
-            localStorage.clear()
-            // 获取协议
-            const handler = window.location.href.split(':')[0]
-            window.location.href = handler + "://" + window.location.host 
-          }, 1000);
+
           break;
         case 403:
           message = "您没有权限操作！";

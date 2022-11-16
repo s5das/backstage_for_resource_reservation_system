@@ -211,6 +211,7 @@ const getTableInfo = () => {
         list[j].endTime.forEach((element, index, arr) => {
           arr[index] = parseInt(element);
         });
+        courses.splice(0,courses.length)
         courses.push({
           username: list[j].username,
           useDepartmentName: list[j].useDepartmentName,
@@ -245,6 +246,7 @@ const onSubmit = () => {
       message: "操作成功",
     });
     show.value = false;
+    getinfo();
   });
 };
 
