@@ -39,23 +39,16 @@ const router = createRouter({
         {
           path: "membermanage",
           component: () => import("@/pages/backstage/memberManage.vue"),
-          redirect: "/backstage/membermanage/department",
+          redirect: "/backstage/membermanage/organization?id=1",
           children: [
-            {
-              path: "department",
-              component: () =>
-                import("@/pages/backstage/memberManage/department.vue"),
-            },
-            {
-              path: "college",
-              component: () =>
-                import("@/pages/backstage/memberManage/college.vue"),
-            },
             {
               path: "organization",
               component: () =>
                 import("@/pages/backstage/memberManage/organization.vue"),
-            },
+              props({query}){
+                return {departmentTypeId:query.id}
+              }
+            }
           ],
         },
         {

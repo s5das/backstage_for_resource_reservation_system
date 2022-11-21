@@ -226,16 +226,24 @@ let form = reactive({
 
 let options = [
   {
-    value: "1582214160136019970",
-    label: "职能部门",
+    value: "1",
+    label: "教学科研机构(学院)",
   },
   {
-    value: "1582214270727233537",
-    label: "书院/学院",
+    value: "2",
+    label: "本科生院(书院)",
   },
   {
-    value: "1582217355755270145",
-    label: "学生组织/工作室",
+    value: "3",
+    label: "校团委",
+  },
+  {
+    value: "4",
+    label: "学生社团/工作室",
+  },
+  {
+    value: "5",
+    label: "党政服务机构",
   },
 ];
 
