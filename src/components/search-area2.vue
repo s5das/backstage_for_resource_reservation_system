@@ -52,6 +52,10 @@ const reset = (form) => {
 const addnew = () => {
   emits("addnew");
 };
+
+defineExpose({
+  form
+})
 </script>
 
 <style lang="less" scoped>

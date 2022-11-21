@@ -1,5 +1,5 @@
 <template>
-  <SearchArea2 @submit="submit" @addnew="addnew" />
+  <SearchArea2 @submit="submit" @addnew="addnew" ref="search_area" />
 
   <div class="table-area" style="padding-left: 20px">
     <el-table :data="tableData" style="width: 100%" height="480">
@@ -64,40 +64,40 @@
     />
   </div>
   <groupinfo v-if="show" :id="id" @close="close"></groupinfo>
-   <div class="mask" v-if="show3">
-  <div class="new" >
-    <div class="head">
-      <div>管理成员</div>
-      <div>
-        <el-icon :size="15" @click="show3 = false"><CloseBold /></el-icon>
+  <div class="mask" v-if="show3">
+    <div class="new">
+      <div class="head">
+        <div>管理成员</div>
+        <div>
+          <el-icon :size="15" @click="show3 = false"><CloseBold /></el-icon>
+        </div>
+      </div>
+      <div class="form-area2">
+        <el-form :model="form_add" label-width="80px" :inline="false">
+          <el-form-item label="组织名称">
+            <el-input v-model="form_add.name"></el-input>
+          </el-form-item>
+
+          <el-form-item label="组织类型">
+            <el-select v-model="form_add.type">
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              >
+              </el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="负责人">
+            <el-input v-model="form_add.person"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="addneworg">新建组织</el-button>
+          </el-form-item>
+        </el-form>
       </div>
     </div>
-    <div class="form-area2">
-      <el-form :model="form_add" label-width="80px" :inline="false">
-        <el-form-item label="组织名称">
-          <el-input v-model="form_add.name"></el-input>
-        </el-form-item>
-
-        <el-form-item label="组织类型">
-          <el-select v-model="form_add.type">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            >
-            </el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="负责人">
-          <el-input v-model="form_add.person"></el-input>
-        </el-form-item>
-        <el-form-item>
-              <el-button type="primary" @click="addneworg">新建组织</el-button>
-        </el-form-item>
-      </el-form>
-    </div>
-  </div>
   </div>
 </template>
 
@@ -106,21 +106,22 @@ import {
   getInfoByPage,
   modifyPartmentIsDisabled,
   removeAdmin,
-  addAdimin
+  addAdimin,
 } from "../../../http/api/memberManage";
 import { CloseBold } from "@element-plus/icons-vue";
 
-let props = defineProps(['departmentTypeId']) 
-
+let props = defineProps(["departmentTypeId"]);
+let search_area = ref();
 console.log(props.departmentTypeId);
 
 watch(
-  ()=>props.departmentTypeId,
-  ()=>{
+  () => props.departmentTypeId,
+  () => {
+    page.value = 1;
+    search_area.value.form.resetFields();
     getinfo();
   }
-)
-
+);
 
 let form_add = reactive({
   name: "",
@@ -154,26 +155,21 @@ let options = [
 let show3 = ref(false);
 
 const addnew = () => {
-  form_add.name = ''
-  form_add.type = ''
-  form_add.person =''
+  form_add.name = "";
+  form_add.type = "";
+  form_add.person = "";
   show3.value = true;
 };
 
-const addneworg = ()=>{
-  addAdimin(form_add.name,form_add.person,form_add.type).then(
-    (res)=>{
-      ElMessage({
-      type:'success',
-      message:'操作成功'
-    }
-    )
-    show3.value = false
-    }
-  )
-}
-
-
+const addneworg = () => {
+  addAdimin(form_add.name, form_add.person, form_add.type).then((res) => {
+    ElMessage({
+      type: "success",
+      message: "操作成功",
+    });
+    show3.value = false;
+  });
+};
 
 const tableData = ref([]);
 
@@ -183,7 +179,6 @@ let page = ref(1);
 const pagechange = () => {
   getinfo();
 };
-
 
 let search_departmentName = "";
 let search_name = "";
@@ -250,10 +245,9 @@ getinfo();
 </script>
 
 <style lang="less" scoped>
-.table-area{
-   height: 400px;
-   overflow-y: scroll;
-
+.table-area {
+  height: 400px;
+  overflow-y: scroll;
 }
 .serch-area {
   height: 70px;
@@ -271,7 +265,7 @@ getinfo();
   margin: auto;
   right: 0;
 }
-.mask{
+.mask {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -295,7 +289,7 @@ getinfo();
   height: 240px;
   margin-top: 30px;
 }
-.head{
+.head {
   height: 80px;
   display: flex;
   justify-content: space-between;
