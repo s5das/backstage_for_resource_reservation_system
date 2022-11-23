@@ -92,7 +92,7 @@ const submit = (formdata) => {
 };
 
 const getinfo = () => {
-    getInfoByPage(page.value,"3",search_name,search_partment,search_room,search_time).then(
+    getInfoByPage(page.value,"2",search_name,search_partment,search_room,search_time).then(
       (res) => {
         for(let i = 0;i<res.items.length;i++){
           let temp = new Date(res.items[i].createTime)
