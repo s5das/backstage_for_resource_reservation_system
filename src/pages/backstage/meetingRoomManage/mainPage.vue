@@ -67,7 +67,7 @@
     </div>
 
     <div class="show-area">
-      <SchedulingTable :minuteHeight="1" v-model="courses"></SchedulingTable>
+      <SchedulingTable :minuteHeight="1" v-model="courses" :time="date"></SchedulingTable>
     </div>
 
     <div class="mask" v-if="show">
@@ -196,12 +196,15 @@ const handlePictureCardPreview = (uploadFile) => {
   dialogVisible.value = true;
 };
 
+let date = reactive([])
 // show-area
 const getTableInfo = () => {
   getOrder(id, time.value).then((res) => {
     console.log(res);
     courses.splice(0,courses.length)
+    date.splice(0,date.length)
     for (let i = 0; i < res.items.length; i++) {
+      date.push(res.items[i].date)
       let list = res.items[i].list;
       for (let j = 0; j < list.length; j++) {
         list[j].startTime = list[j].startTime.split(":");

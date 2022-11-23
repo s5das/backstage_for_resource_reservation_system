@@ -68,19 +68,6 @@
               </el-form-item>
             </div>
             <div class="search-item">
-              <el-form-item label="电源板">
-                <el-select v-model="form.hasPowerStrip">
-                  <el-option
-                    v-for="item in options2"
-                    :key="item.value"
-                    :label="item.label"
-                    :value="item.value"
-                  >
-                  </el-option>
-                </el-select>
-              </el-form-item>
-            </div>
-            <div class="search-item">
               <el-form-item label="会议室名称">
                 <el-input v-model="form.roomName"></el-input>
               </el-form-item>
@@ -197,7 +184,6 @@ let form = reactive({
   buildingId: "",
   capacity: 0,
   hasComputer: false,
-  hasPowerStrip: false,
   hasProjector: false,
   hasWifi: false,
 });
@@ -206,7 +192,6 @@ const onSearch = () => {
   search_name = form.roomName;
   search_capacity = form.capacity;
   search_hasComputer = form.hasComputer;
-  search_hasPowerStrip = form.hasPowerStrip;
   search_hasProjector = form.hasProjector;
   search_hasWifi = form.hasWifi;
   getinfo();

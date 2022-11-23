@@ -20,8 +20,12 @@
             ]"
             :key="dayIndex"
             :style="{ width: `${dayWidth}px` }"
-          >
-            {{ day }}
+          > 
+          <div>
+            <div style="margin-bottom: 10px;">{{time[dayIndex]}}</div>
+            <div>{{day}}</div>
+          </div>
+            
           </div>
         </div>
       </div>
@@ -148,6 +152,9 @@ export default {
       type: Number,
       default: 0,
     },
+    time:{
+      typle:Object,
+    }
   },
   data() {
     return {
@@ -258,6 +265,9 @@ export default {
         },
       };
     },
+  },
+  mounted() {
+    console.log(this.time)
   },
   methods: {
     add(part) {
