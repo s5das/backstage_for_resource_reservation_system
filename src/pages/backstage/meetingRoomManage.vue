@@ -14,8 +14,8 @@
     <div class="right">
       <div class="top">
         <el-form :model="form" label-width="80px" size="small" ref="formref">
-          <div style="display: flex">
-            <div class="search-item">
+          <div style="display: flex;justify-content: flex-end;">
+            <!-- <div class="search-item">
               <el-form-item label="容纳人数" prop="capacity">
                 <el-select v-model="form.capacity">
                   <el-option
@@ -78,7 +78,7 @@
                   >查询</el-button
                 >
               </el-form-item>
-            </div>
+            </div> -->
             <div class="search-item">
               <el-date-picker
                 v-model="time"
@@ -226,7 +226,7 @@ getinfo();
     padding: 10px;
   }
   .search-item {
-    flex: 1;
+    width: 300px;
   }
 }
 </style>
