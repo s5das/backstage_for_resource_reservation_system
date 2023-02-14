@@ -134,15 +134,13 @@
               </div>
             </div>
             <div class="right-2">
-              <div>可容纳人数：{{ item2.capacity }}人</div>
-              <div>投影：{{ item2.hasProjector?"提供投影":"不提供投影" }}</div>
-              <div>电脑：{{ item2.hasComputer?"提供电脑": "不提供电脑"}}</div>
-              <div>WiFi:{{ item2.hasWifi?"提供WiFi":"不提供WiFi" }}</div>
-              <div>其他信息：{{ item2.otherInfo||"无" }}</div>
+              <div style="margin-bottom: 15px;">可容纳人数：{{ item2.capacity }}人</div>
+              <div style="margin-bottom: 15px;">投影：{{ item2.hasProjector?"提供投影":"不提供投影" }}</div>
+              <div style="margin-bottom: 15px;">电脑：{{ item2.hasComputer?"提供电脑": "不提供电脑"}}</div>
+              <div style="margin-bottom: 15px;">WiFi:{{ item2.hasWifi?"提供WiFi":"不提供WiFi" }}</div>
+              <div style="margin-bottom: 15px;">其他信息：{{ item2.otherInfo||"无" }}</div>
             </div>
             <div class="right-3">
-              <div>是否取消</div>
-              <div>取消类型</div>
               <div class="textarea">
                 <div class="label">驳回理由：</div>
                 <div class="input">

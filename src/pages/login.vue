@@ -13,7 +13,7 @@
         <el-form-item label="密码"  prop="password">
           <el-input v-model="formEl.password" type="password" placeholder="请输入密码"></el-input>
         </el-form-item>
-        <el-form-item label="验证码" prop="verify">
+        <!-- <el-form-item label="验证码" prop="verify">
           <el-row :gutter="20" >
             <el-col :span="12" :offset="0">
               <el-input
@@ -25,7 +25,7 @@
               <SIdentify :identifyCode="codeofverify" @click="changecode"></SIdentify>
             </el-col>
           </el-row>
-        </el-form-item>
+        </el-form-item> -->
         <el-form-item>
           <el-button type="primary" @click="onSubmit(form)">登录</el-button>
         </el-form-item>
@@ -40,38 +40,38 @@ import {login} from '../http/api/login'
 import serviceAxios from "../http";
 const router = useRouter()
 
-// 生成验证码
-let codes = '1234567890'
-const gencode = () => {
-    let code=""
-    for(let i = 0;i<4;i++){
-        let index = Math.floor(Math.random()*codes.length)
-        code += codes.slice(index,index+1)
-    }
-    return code
-}
-// 验证码
-let codeofverify  = ref(gencode())
-const changecode = ()=>{
-    codeofverify.value = gencode()
-}
+// // 生成验证码
+// let codes = '1234567890'
+// const gencode = () => {
+//     let code=""
+//     for(let i = 0;i<4;i++){
+//         let index = Math.floor(Math.random()*codes.length)
+//         code += codes.slice(index,index+1)
+//     }
+//     return code
+// }
+// // 验证码
+// let codeofverify  = ref(gencode())
+// const changecode = ()=>{
+//     codeofverify.value = gencode()
+// }
 
 
 const form = ref()
 let formEl = reactive({
   username: "",
   password: "",
-  verify: "",
+  // verify: "",
 });
 
 
-const checkCode = (rule, value, callback) => {
-    if(value!==codeofverify.value){
-      callback(new Error("请输入正确验证码"))
-    }else{
-      callback()
-    }
-}
+// const checkCode = (rule, value, callback) => {
+//     if(value!==codeofverify.value){
+//       callback(new Error("请输入正确验证码"))
+//     }else{
+//       callback()
+//     }
+// }
 
 const rules = reactive({
   username: [
@@ -79,11 +79,11 @@ const rules = reactive({
   ],
   password: [
     { required: true, message: '请输入密码', trigger: 'blur' },
-  ],
-  verify: [
-    { required: true, message: '请输入验证码', trigger: 'blur' },
-    { validator: checkCode, trigger: 'blur' }
-  ],
+  ]
+  // verify: [
+  //   { required: true, message: '请输入验证码', trigger: 'blur' },
+  //   { validator: checkCode, trigger: 'blur' }
+  // ],
 })
 
 
@@ -127,7 +127,7 @@ const onSubmit = async (form) => {
     font-weight: 600;
 
   }
-    height: 350px;
+    height: 300px;
     width: 450px;
     background-color: #fff;
     display: flex;
