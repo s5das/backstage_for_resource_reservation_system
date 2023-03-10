@@ -302,7 +302,7 @@ export default {
   justify-content: center;
 }
 .course-table {
-  margin: 0 auto;
+  margin: 0px auto;
   font-size: 14px;
 }
 .menu {
