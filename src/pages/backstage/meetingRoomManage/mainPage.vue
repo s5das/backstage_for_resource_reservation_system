@@ -3,7 +3,7 @@
     <div class="info">
       <div class="info_left">
         <div class="item">
-          <img :src="info.avatar" style="width: 100%; height: auto" />
+          <img :src="info.avatar" style="width: 80%; height: auto" />
         </div>
         <div
           class="item"
@@ -67,7 +67,7 @@
     </div>
 
     <div class="show-area">
-      <SchedulingTable :minuteHeight="1" v-model="courses" :time="date"></SchedulingTable>
+      <SchedulingTable :minuteHeight="0.7" v-model="courses" :time="date"></SchedulingTable>
     </div>
 
     <div class="mask" v-if="show">
@@ -260,7 +260,7 @@ getTableInfo();
 <style lang="less" scoped>
 .info {
   display: flex;
-  height: 180px;
+  height: 100px;
   .info_left {
     flex: 4;
     display: flex;
@@ -278,8 +278,8 @@ getTableInfo();
 }
 .show-area {
   margin-top: 100px;
-  height: 600px;
-  overflow: scroll;
+  height: 650px;
+  overflow-y: hidden;
 }
 .mask {
   background-color: rgba(0, 0, 0, 0.5);

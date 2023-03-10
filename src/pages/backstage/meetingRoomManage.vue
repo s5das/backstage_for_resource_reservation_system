@@ -216,8 +216,6 @@ getinfo();
   display: flex;
   .leftbar {
     flex: 1;
-    height: 800px;
-    overflow: scroll;
     background-color: #f0f0f2;
   }
   .right {

@@ -238,8 +238,8 @@ export default {
         // 早课180分钟
         morning: {
           name: "早",
-          height: this.pixelOfMinutes * 180,
-          start: [0, 0],
+          height: 0,
+          start: [8,0],
           end: [8, 0],
         },
         // 上午300分钟
@@ -261,7 +261,7 @@ export default {
           name: "晚",
           height: this.pixelOfMinutes * 300,
           start: [18, 0],
-          end: [24, 0],
+          end: [22, 0],
         },
       };
     },
