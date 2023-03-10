@@ -129,7 +129,7 @@ console.log(time);
 let id = route.params.id;
 let info = ref({});
 
-let status = ref(false);
+let status = ref();
 const getinfo = () => {
   getInfoById(id).then((res) => {
     console.log(res);
@@ -277,7 +277,7 @@ getTableInfo();
   }
 }
 .show-area {
-  margin-top: 100px;
+  margin-top: 90px;
   height: 650px;
   overflow-y: hidden;
 }

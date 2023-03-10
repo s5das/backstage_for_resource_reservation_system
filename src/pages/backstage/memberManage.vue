@@ -22,7 +22,7 @@
   getTypeList().then(
     (res)=>{
       type_list.value = res.items
-      status.value = ref(type_list.value[0].departmentTypeName)
+      status.value = type_list.value[0].departmentTypeName
     }
   )
 
