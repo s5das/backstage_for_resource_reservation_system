@@ -1,5 +1,5 @@
 <template>
-  <div class="course-content" :style="{'background-color':color_list[Math.floor(5*Math.random())]}">
+  <div class="course-content" >
     <div>预约人：{{ course.username }}</div>
     <div>使用单位：{{ course.useDepartmentName }}</div>
     <div>主题：{{ course.title }}</div>
@@ -29,11 +29,6 @@ export default {
     course: Object,
     index: Number,
   },
-  data() {
-    return {
-      color_list: ['#3f51b5','#8987BC','#0091B5','#6DBAA1','#009E9D']
-    }
-  },
   methods: {
     fixNumber,
     formatTime(num) {
@@ -56,6 +51,7 @@ export default {
 
 .course-content {
   position: relative;
+  background-color: #3f51b5;
   color: #fff;
   border-radius: 4px;
   height: 95%;
