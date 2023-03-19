@@ -109,6 +109,8 @@ import {
   addAdimin,
 } from "../../../http/api/memberManage";
 import { CloseBold } from "@element-plus/icons-vue";
+import {getTypeList} from "../../../http/api/memberManage"
+
 
 let props = defineProps(["departmentTypeId"]);
 let search_area = ref();
@@ -129,28 +131,24 @@ let form_add = reactive({
   person: "",
 });
 
-let options = [
-  {
-    value: "1",
-    label: "教学科研机构(学院)",
-  },
-  {
-    value: "2",
-    label: "本科生院(书院)",
-  },
-  {
-    value: "3",
-    label: "校团委",
-  },
-  {
-    value: "4",
-    label: "学生社团/工作室",
-  },
-  {
-    value: "5",
-    label: "党政服务机构",
-  },
-];
+let options = reactive([]);
+
+getTypeList().then(
+
+   (res)=>{
+      console.log(res);
+      for(let i =0;i< res.items.length;i++ ){
+         options.push({
+          
+          value:res.items[i].id,
+          label:res.items[i].departmentTypeName
+         })
+      }
+
+   }
+
+)
+
 
 let show3 = ref(false);
 
