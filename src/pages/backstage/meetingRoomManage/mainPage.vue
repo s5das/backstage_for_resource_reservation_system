@@ -3,7 +3,7 @@
     <div class="info">
       <div class="info_left">
         <div class="item">
-          <img :src="info.avatar" style="width: 80%; height: auto" />
+          <img :src="info.avatar" style="width:220px; height: 170px" />
         </div>
         <div
           class="item"
@@ -45,10 +45,7 @@
             align-items: center;
           "
         >
-          <div>其他信息：</div>
-          <div>
-            {{ info.otherInfo }}
-          </div>
+          <div>其他信息： {{ info.otherInfo }}</div>
         </div>
       </div>
       <div class="info_right">
@@ -65,7 +62,6 @@
         </div>
       </div>
     </div>
-
     <div class="show-area">
       <SchedulingTable :minuteHeight="0.7" v-model="courses" :time="date"></SchedulingTable>
     </div>
@@ -260,8 +256,11 @@ getTableInfo();
 <style lang="less" scoped>
 .info {
   display: flex;
-  height: 100px;
+  height: 600px;
+  width: 230px;
+  flex-direction: column;
   .info_left {
+    flex-direction: column;
     flex: 4;
     display: flex;
     .item {
@@ -277,8 +276,10 @@ getTableInfo();
   }
 }
 .show-area {
-  margin-top: 90px;
-  height: 650px;
+  position: absolute;
+  top: 150px;
+  left: 500px;
+  height: 850px;
   overflow-y: hidden;
 }
 .mask {

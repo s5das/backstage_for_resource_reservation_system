@@ -1,7 +1,7 @@
 <template>
   <div class="main">
-    <div class="leftbar">
-      <el-menu class="el-menu-vertical-demo" router>
+    <div class="leftbar" >
+      <el-menu mode="horizontal" class="el-menu-vertical-demo" router>
         <el-menu-item
           :index="'/backstage/meetingRoomManage/mainpage/' + item.id"
           v-for="item in option"
@@ -79,7 +79,11 @@
                 >
               </el-form-item>
             </div> -->
-            <div class="search-item">
+           
+          </div>
+        </el-form>
+      </div>
+       <div class="search-item">
               <el-date-picker
                 v-model="time"
                 type="date"
@@ -88,9 +92,7 @@
                 @change="change"
               />
             </div>
-          </div>
-        </el-form>
-      </div>
+            <br>
       <router-view></router-view>
     </div>
   </div>
@@ -213,14 +215,15 @@ getinfo();
 
 <style lang="less" scoped>
 .main {
-  display: flex;
-  .leftbar {
-    flex: 1;
+  // display: flex;
+ .leftbar {
+    // flex: 1;
     background-color: #f0f0f2;
   }
   .right {
-    flex: 9;
+    // flex: 9;
     overflow-x: hidden;
+   
     padding: 10px;
   }
   .search-item {

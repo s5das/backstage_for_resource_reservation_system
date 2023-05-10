@@ -2,12 +2,17 @@
   <SearchArea2 @submit="submit" @addnew="addnew" ref="search_area" />
 
   <div class="table-area" style="padding-left: 20px">
-    <el-table :data="tableData" style="width: 100%" height="480">
-      <el-table-column property="departmentName" label="组织名称" width="200" />
-      <el-table-column property="timesSum" label="预约次数" width="100" />
-      <el-table-column property="timesFail" label="违约次数" width="100" />
-      <el-table-column property="memberNum" label="绑定成员数" width="100" />
-      <el-table-column property="isDisabled" label="禁止组织预约" width="250">
+    <el-table :data="tableData" 
+    style="width: 100%" 
+    height="480"  
+    :header-cell-style="{color: '#000000','text-align':'center'}" 
+    :cell-style="{'text-align':'center'}"
+    :row-style="{height:'50px'}">
+      <el-table-column property="departmentName" label="组织名称" width="320" />
+      <el-table-column property="timesSum" label="预约次数" width="160" />
+      <el-table-column property="timesFail" label="违约次数" width="160" />
+      <el-table-column property="memberNum" label="绑定成员数" width="160" />
+      <el-table-column property="isDisabled" label="禁止组织预约" width="320">
         <template #default="scope">
           <el-switch
             :model-value="scope.row ? scope.row.isDisabled : false"
@@ -19,7 +24,7 @@
       <el-table-column
         property="members"
         label="绑定成员"
-        width="200"
+        width="260"
         show-overflow-tooltip
       />
 
