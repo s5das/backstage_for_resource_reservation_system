@@ -83,7 +83,7 @@
     </el-table>
 
   </div>
-  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="true" :showreject="true" />
+  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="true" :showreject="true" :showsave="false" />
   <div class="pagecontroler">
     <el-pagination
       background
@@ -102,7 +102,9 @@ let isshow = ref(false)
 const getditail = () => {
   isshow.value = true;
 };
-
+const getreject=() => {
+  isreject.value=true
+}
 const tableData = ref([]);
 
 

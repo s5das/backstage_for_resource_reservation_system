@@ -7,85 +7,11 @@
           <el-icon :size="20" @click="emits('close')"><CloseBold /></el-icon>
         </div>
         <div class="bottom">
-          <div class="left">
-            <div class="box1">
-              <div>
-                <div>预约单号：</div>
-                <div>{{ item.orderNo }}</div>
-                <div>发起时间：</div>
-                <div>{{ item.createTime }}</div>
-                <div>预约人：{{ item.username }}</div>
-                <div>学号：{{ item.userId }}</div>
-                <div>归属组织：{{ item.departmentName }}</div>
-                <div>联系方式：{{ item.mobile }}</div>
-              </div>
-              <div>
-                <div>
-                  预约单状态：{{
-                    item.status == "0"
-                      ? "待审批"
-                      : item.status == "1"
-                      ? "待使用"
-                      : item.status == "2"
-                      ? "已使用"
-                      : "已取消"
-                  }}
-                </div>
-                <div>使用单位：{{ item.useDepartmentName }}</div>
-                <div>预约会议室：{{ item.roomName }}</div>
-                <div>预约时间：{{ item.startTime + "-" + item.endTime }}</div>
-                <div>使用人数：{{ item.userNumber }}</div>
-                <div>会议室主题：{{ item.title }}</div>
-              </div>
-            </div>
-
-            <div class="box2">
-              <div class="textarea">
-                <div class="label">用户备注：</div>
-                <div class="input">
-                  <el-input
-                    v-model="textarea1"
-                    :rows="2"
-                    type="textarea"
-                    disabled
-                  />
-                </div>
-              </div>
-              <div class="textarea">
-                <div class="label">管理员备注：</div>
-                <div class="input">
-                  <el-input
-                    v-model="textarea2"
-                    :rows="2"
-                    type="textarea"
-                    placeholder="Please input"
-                  />
-                </div>
-              </div>
-            </div>
-            <div class="btn-area">
-              <el-button
-                type="primary"
-                size="default"
-                @click="passItem"
-                style="margin: 5px"
-                v-if="showpass"
-                >通过</el-button
-              >
-              <el-button
-                type="primary"
-                size="default"
-                @click="saveItem"
-                style="margin: 5px"
-                >保存</el-button
-              >
-            </div>
-          </div>
-          <div class="right" v-if="showreject">
+          <div class="right" >
             <div class="right-1">
               <div class="a">
                 <el-image
-                  style="width: 100px; height: 100px"
+                  style="width: 200px; height: 150px"
                   :src="item2.avatar"
                   fit="fill"
                   :lazy="true"
@@ -105,6 +31,7 @@
                     text-overflow: ellipsis;
                     flex: 1;
                     width: 200px;
+                    font-weight: 800
                   "
                 >
                   {{ item.roomName }}
@@ -140,7 +67,7 @@
               <div style="margin-bottom: 15px;">WiFi：{{ item2.hasWifi?"提供WiFi":"不提供WiFi" }}</div>
               <div style="margin-bottom: 15px;">其他信息：{{ item2.otherInfo||"无" }}</div>
             </div>
-            <div class="right-3">
+            <!-- <div class="right-3">
               <div class="textarea">
                 <div class="label">驳回理由：</div>
                 <div class="input">
@@ -152,11 +79,128 @@
                   />
                 </div>
               </div>
-            </div>
-            <div class="right-4">
-              <el-button type="danger" size="default" @click="rejectItem">驳回</el-button>
-            </div>
+            </div> -->
           </div>
+          <div class="left">
+            <div class="box1">
+            
+              <div>
+                <div class="hengzhi">
+                  <div class="table"> &nbsp预约单号</div>
+                  <div class="text">&nbsp{{ item.orderNo }}</div>
+                </div>
+
+                <div class="hengzhi">
+                <div class="table"> &nbsp发起时间 </div>
+                <div class="text">&nbsp{{ item.createTime }}</div>
+                </div>
+
+                <div class="hengzhi">
+                  <div class="table"> &nbsp预约人 </div>
+                  <div class="text">&nbsp{{ item.username }}</div>
+                </div>
+
+                <div class="hengzhi">
+                  <div class="table"> &nbsp学号 </div>
+                  <div class="text">&nbsp{{ item.userId }}</div>
+                </div>
+
+                <div class="hengzhi">
+                  <div class="table"> &nbsp归属组织 </div>
+                  <div class="text">&nbsp{{ item.departmentName }}</div>
+                </div>
+
+                <div class="hengzhi">
+                  <div class="table"> &nbsp联系方式 </div>
+                  <div class="text">&nbsp{{ item.mobile }}</div>
+                </div>
+              </div>
+              <div>
+                <div class="hengzhi">
+                  <div class="table"> &nbsp预约单状态 </div>
+                  <div class="text">&nbsp{{
+                    item.status == "0"
+                      ? "待审批"
+                      : item.status == "1"
+                      ? "待使用"
+                      : item.status == "2"
+                      ? "已使用"
+                      : "已取消"
+                  }}</div>
+                </div>
+                <div class="hengzhi">
+                  <div class="table"> &nbsp使用单位 </div>
+                  <div class="text">&nbsp{{ item.useDepartmentName }}</div>
+                </div>
+                <div class="hengzhi">
+                  <div class="table"> &nbsp预约会议室 </div>
+                  <div class="text">&nbsp{{ item.roomName }}</div>
+                </div>
+                <div class="hengzhi">
+                  <div class="table"> &nbsp预约时间 </div>
+                  <div class="text">&nbsp{{ item.startTime + "-" + item.endTime }}</div>
+                </div>
+                <div class="hengzhi">
+                  <div class="table"> &nbsp使用人数 </div>
+                  <div class="text">&nbsp{{ item.userNumber }}</div>
+                </div>
+                <div class="hengzhi">
+                  <div class="table"> &nbsp会议室主题 </div>
+                  <div class="text">&nbsp{{ item.title }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="box2">
+              <div class="textarea">
+                <div class="label">用户备注：</div>
+                <div class="input">
+                  <el-input
+                    v-model="textarea1"
+                    :rows="5"
+                    type="textarea"
+                    disabled
+                  />
+                </div>
+              </div>
+              <!-- <div class="textarea">
+                <div class="label">管理员备注：</div>
+                <div class="input">
+                  <el-input
+                    v-model="textarea2"
+                    :rows="2"
+                    type="textarea"
+                    placeholder="Please input"
+                  />
+                </div>
+              </div> -->
+            </div>
+            <div class="btn-area">
+              <el-button
+                type="primary"
+                size="default"
+                @click="passItem"
+                style="margin: 5px"
+                v-if="showpass"
+                >通过</el-button
+              >
+              <el-button
+                type="primary"
+                size="default"
+                @click="saveItem"
+                style="margin: 5px"
+                v-if="showsave"
+                >保存</el-button
+              >
+              <el-button 
+              type="danger" 
+              size="default" 
+              @click="rejectItem"
+              v-if="showreject"
+              style="margin:5px">
+              驳回</el-button>
+            </div>
+          </div>          
         </div>
       </div>
     </div>
@@ -168,7 +212,7 @@ import { CloseBold, Picture as IconPicture } from "@element-plus/icons-vue";
 import { getDetail, pass, save, cancel } from "../http/api/order";
 import {getInfoById} from "../http/api/meetingRoom"
 const emits = defineEmits(["close",'refresh']);
-const props = defineProps(["status", "showpass", "showreject", "id","meetingRoomId"]);
+const props = defineProps(["status", "showpass", "showreject", "showsave","id","meetingRoomId"]);
 let textarea1 = ref("");
 let textarea2 = ref("");
 let textarea3 = ref("");
@@ -247,6 +291,9 @@ onMounted(() => {
 </script>
 
 <style lang="less" scoped>
+.el-button {
+font-size: 13px;
+}
 .mask {
   position: fixed;
   top: 0;
@@ -263,6 +310,7 @@ onMounted(() => {
   display: flex;
   justify-content: space-around;
   margin-bottom: 10px;
+  flex-flow: column;
   .label {
     flex: 1.5;
   }
@@ -292,14 +340,30 @@ onMounted(() => {
       flex-direction: column;
       padding: 10px;
       .box1 {
-        flex: 3;
+        // flex: 3;
         display: flex;
         margin-bottom: 15px;
         div {
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-around;
+          .text{
+            width:200px
+          }
+          .table{
+            text-align: left;
+            width: 90px;
+            height: 40px;
+            margin-right: auto;    
+            background-color: #bbb;
+          }
+          .hengzhi{
+            display: flex;
+            flex-direction: row;
+          }
+          margin: -1px;
+          border: solid 1px black;
+          // display: flex;
+          // flex-direction: column;
+          // justify-content: space-around;
+          line-height: 40px;
         }
       }
       .box2 {
@@ -316,10 +380,11 @@ onMounted(() => {
       padding: 10px;
       display: flex;
       flex-direction: column;
-      flex: 1;
+      // flex: 1;
       .right-1 {
-        display: flex;
-        flex: 1;
+        // display: flex;
+        // flex: 1;
+        text-align: center;
         .a {
           flex: 1;
         }
@@ -330,9 +395,13 @@ onMounted(() => {
         justify-content: space-around;
         align-items: center;
         flex: 1.5;
+        line-height: 30px;
+        
       }
       .right-2 {
         flex: 1;
+        text-align: center;
+        line-height: 30px;
       }
       .right-3 {
         flex: 0.8;

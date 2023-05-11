@@ -16,7 +16,24 @@
                   <el-input v-model="form.name"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="8" :offset="0">
+                <el-col :span="8" :offset="0">
+                <el-form-item label="负责人">
+                  <el-input v-model="form.person"></el-input>
+                </el-form-item>
+              </el-col>
+                  <el-col :span="8" :offset="0">
+                <el-form-item label="联系方式">
+                  <el-input v-model="form2.number"></el-input> <!--绑定联系方式给服务器 -->
+                </el-form-item>
+              </el-col>
+            
+            </el-row>
+          </el-form>
+        </div>
+        <div class="search-area">
+          <el-form :model="form2" label-width="80px" :inline="true">
+            <el-row :gutter="20">
+                        <el-col :span="8" :offset="0">
                 <el-form-item label="组织类型">
                   <el-select v-model="form.type">
                     <el-option
@@ -30,27 +47,17 @@
                 </el-form-item>
               </el-col>
               <el-col :span="8" :offset="0">
-                <el-form-item label="负责人">
-                  <el-input v-model="form.person"></el-input>
-                </el-form-item>
-              </el-col>
-            </el-row>
-          </el-form>
-        </div>
-        <div class="search-area">
-          <el-form :model="form2" label-width="80px" :inline="true">
-            <el-row :gutter="20">
-              <el-col :span="8" :offset="0">
                 <el-form-item label="成员姓名">
                   <el-input v-model="form2.membername"></el-input>
                 </el-form-item>
               </el-col>
-              <el-col :span="4" :offset="0">
+
+              <el-col :span="1" :offset="1">
                 <el-form-item>
                   <el-button type="primary" @click="onSearch">查询</el-button>
                 </el-form-item>
               </el-col>
-              <el-col :span="4" :offset="8">
+              <el-col :span="1" :offset="1">
                 <el-form-item>
                   <el-button type="primary" @click="addnew">新建成员</el-button>
                 </el-form-item>
@@ -247,6 +254,7 @@ getTypeList().then(
 
 let form2 = reactive({
   membername: "",
+  number:""
 });
 
 let search_name = "";
