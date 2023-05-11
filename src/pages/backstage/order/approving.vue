@@ -102,9 +102,7 @@ let isshow = ref(false)
 const getditail = () => {
   isshow.value = true;
 };
-const getreject=() => {
-  isreject.value=true
-}
+
 const tableData = ref([]);
 
 
