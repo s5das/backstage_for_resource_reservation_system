@@ -4,29 +4,32 @@
     <el-table
       :data="tableData"
       style="width: 100%"
+      :header-cell-style="{color: '#000000','text-align':'center'}" 
+      :cell-style="{'text-align':'center'}"
+      :row-style="{height:'50px',}"
     >
-      <el-table-column property="orderNo" label="预约单号" width="170" />
+      <el-table-column property="orderNo" label="预约单号" width="200" />
       <el-table-column
         property="createTime"
         label="发起时间"
-        width="180"
+        width="200"
       />
-      <el-table-column property="username" label="预约人" width="100" />
-      <el-table-column property="mobile" label="联系方式" width="150" />
+      <el-table-column property="username" label="预约人" width="140" />
+      <el-table-column property="mobile" label="联系方式" width="170" />
       <el-table-column
         property="useDepartmentName"
         label="使用单位"
-        width="150"
+        width="170"
       />
-      <el-table-column property="roomName" label="预约会议室" width="140" />
-      <el-table-column property="orderTime" label="预约时间" width="190" />
+      <el-table-column property="roomName" label="预约会议室" width="160" />
+      <el-table-column property="orderTime" label="预约时间" width="210" />
       <el-table-column
         property="title"
         label="取消类型"
-        width="120"
+        width="130"
       />
-      <el-table-column property="cancelReason" label="驳回原因" width="90"  show-overflow-tooltip/>
-      <el-table-column  label="操作" width="90">
+      <el-table-column property="cancelReason" label="驳回原因" width="110"  show-overflow-tooltip/>
+      <el-table-column  label="操作" width="180">
         <template #default="scope">
           <el-button
             link

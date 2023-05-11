@@ -93,7 +93,10 @@
                 @click="add(part)"
                 :key="partIndex"
                 :style="{ height: `${part.height}px` }"
-              ></div>
+                >
+                <div v-for="item of 5" :key="item" :style="{borderBottom:'solid 1px #eee',height:'42px'}"></div>
+              </div>
+             
             </div>
           </div>
           <div
@@ -300,6 +303,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  
 }
 .course-table {
   margin: 0px auto;
@@ -307,7 +311,7 @@ export default {
 }
 .menu {
   height: 100%;
-  border: 1px solid #eee;
+  /* border: 1px solid #eee; */
 }
 .top-table {
   background-color: #fff;
@@ -315,14 +319,14 @@ export default {
   z-index: 2;
 }
 .week-table {
-  border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee;
+  /* border-bottom: 1px solid #eee;
+  border-top: 1px solid #eee; */
   height: 100%;
 }
 .week-table .day {
   text-align: center;
   height: 100%;
-  border-right: 1px solid #eee;
+  /* border-right: 1px solid #eee; */
   transition: all 1000ms;
 }
 .week-table .day.active {
@@ -331,20 +335,21 @@ export default {
 }
 .col {
   transition: all 1000ms;
+  
 }
 .col.active {
   background-color: #f5f6fd;
 }
 .section-table {
   position: relative;
-  border-right: 1px solid #eee;
+  /* border-right: 1px solid #eee; */
   text-align: center;
-  border-left: 1px solid #eee;
+  /* border-left: 1px solid #eee; */
 }
 .cell {
   position: relative;
-  border-right: 1px solid #eee;
-  border-bottom: 1px solid #eee;
+  /* border-right: 1px solid #eee;*/
+  /* border-bottom: 1px solid #eee; */
   color: #ddd;
 }
 .all-courses {
