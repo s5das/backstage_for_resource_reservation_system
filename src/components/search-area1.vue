@@ -30,8 +30,8 @@
           </div>
           <div class="item">
             <el-form-item>
-              <el-button type="primary" @click="onSubmit()">查询</el-button>
-              <el-button type="primary" @click="reset(form)">重置</el-button>
+              <el-button class="blue" type="primary" @click="onSubmit()">查询</el-button>
+              <el-button class="blue" type="primary" @click="reset(form)">重置</el-button>
             </el-form-item>
           </div>
         </div>
@@ -62,6 +62,10 @@ const reset = (form) => {
 </script>
 
 <style lang="less" scoped>
+.blue{
+  background-color: #2a77f4;
+  border-color:#2a77f4 ;
+}
 .serch-area {
   height: 70px;
   display: flex;

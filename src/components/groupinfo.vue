@@ -23,7 +23,7 @@
               </el-col>
                   <el-col :span="8" :offset="0">
                 <el-form-item label="联系方式">
-                  <el-input v-model="form2.number"></el-input> <!--绑定联系方式给服务器 -->
+                  <el-input v-model="form.personMobile"></el-input> <!--绑定联系方式给服务器 -->
                 </el-form-item>
               </el-col>
             
@@ -31,7 +31,7 @@
           </el-form>
         </div>
         <div class="search-area">
-          <el-form :model="form2" label-width="80px" :inline="true">
+          <el-form :model="form2" label-width="80px" :inline="false">
             <el-row :gutter="20">
                         <el-col :span="8" :offset="0">
                 <el-form-item label="组织类型">
@@ -52,21 +52,26 @@
                 </el-form-item>
               </el-col>
 
-              <el-col :span="1" :offset="1">
+              <el-col :span="1" :offset="0">
                 <el-form-item>
-                  <el-button type="primary" @click="onSearch">查询</el-button>
+                  <el-button class="blue" type="primary" @click="onSearch">查询</el-button>
                 </el-form-item>
               </el-col>
               <el-col :span="1" :offset="1">
                 <el-form-item>
-                  <el-button type="primary" @click="addnew">新建成员</el-button>
+                  <el-button class="blue" type="primary" @click="addnew">新建成员</el-button>
                 </el-form-item>
               </el-col>
             </el-row>
           </el-form>
         </div>
         <div class="table-area">
-          <el-table :data="tableData" border stripe height="340">
+          <el-table 
+          :data="tableData" 
+          border 
+          stripe 
+          height="340" 
+          :header-cell-style="{background:'#bbb',color:'black'}"> 
             <el-table-column
               v-for="col in columns"
               :prop="col.id"
@@ -112,11 +117,11 @@
             <el-col :span="12" :offset="0">
               <div>预约次数：{{times3}} 履约次数：{{times2}} 违约次数：{{times1}}</div>
             </el-col>
-            <el-col :span="6" :offset="6">
-              <el-button type="primary" size="default" @click="emits('close')"
+            <el-col :span="4" :offset="8">
+              <el-button  type="info" size="default" @click="emits('close')"
                 >取消</el-button
               >
-              <el-button type="primary" size="default" @click="save()"
+              <el-button class="blue" type="primary" size="default" @click="save()"
                 >保存</el-button
               >
             </el-col>
@@ -125,7 +130,7 @@
 
         <div class="new" v-if="show2">
           <div class="head">
-            <div>新建成员</div>
+            <div>管理成员</div>
             <div>
               <el-icon :size="15" @click="show2 = false"><CloseBold /></el-icon>
             </div>
@@ -142,10 +147,12 @@
                 <el-input v-model="add_form.mobile"></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button @click="show2 = false">取消</el-button>
-                <el-button type="primary" @click="save_gennewmember"
-                  >保存</el-button
-                >
+                <el-button type="info" @click="show2 = false" class="btn2">
+                  取消
+                </el-button>
+                <el-button  type="primary" @click="save_gennewmember" class="btn">
+                  保存
+                </el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -169,8 +176,8 @@
                 <el-input v-model="add_form.mobile"></el-input>
               </el-form-item>
               <el-form-item>
-                <el-button @click="show3.value = false">取消</el-button>
-                <el-button type="primary" @click="save_manage">保存</el-button>
+                <el-button type="info" @click="show3.value = false" class="btn2">取消</el-button>
+                <el-button type="primary" @click="save_manage" class="btn">保存</el-button>
               </el-form-item>
             </el-form>
           </div>
@@ -231,6 +238,7 @@ let form = reactive({
   name: "",
   type: "",
   person: "",
+  personMobile:"",
 });
 
 let options = reactive([]);
@@ -278,6 +286,7 @@ const getinfo = () => {
     form.name = res.item.departmentName;
     form.type = res.item.departmentTypeId;
     form.person = res.item.leaderName;
+    form.personMobile =res.item.leaderMobile; //新增从服务器中获取负责人电话
     title.value = res.item.departmentName;
   });
 };
@@ -350,7 +359,7 @@ const save_manage = () => {
 const delpartmenember = (val) => {
   removeMember(val.id).then(() => {
     ElMessageBox.confirm("是否确认删除？", "删除确认", {
-    confirmButtonText: "确定",
+    confirmButtonText: "确认",
     cancelButtonText: "取消",
     type: "warning",
   }).then(
@@ -369,7 +378,7 @@ const delpartmenember = (val) => {
 };
 
 const save = () => {
-  modifyAdiminInfo(form.name, form.type, props.id, form.person).then(() => {
+  modifyAdiminInfo(form.name, form.type, props.id, form.person, form.personMobile).then(() => {
     emits("close");
     ElMessage({
       type: "success",
@@ -382,7 +391,13 @@ getinfo();
 </script>
 
 <style lang="less" scoped>
-
+.el-input{
+  width:250px;
+}
+.blue{
+  background-color: #2a77f4;
+  border-color:#2a77f4 ;
+}
 .mask {
   position: fixed;
   top: 0;
@@ -423,16 +438,31 @@ getinfo();
       top: 150px;
       left: 325px;
       padding: 10px;
-      height: 350px;
+      height: 300px;
       width: 350px;
       z-index: 999;
       background-color: #fff;
       border: #bbb 1px solid;
+      
     }
     .form-area2 {
       height: 240px;
-    }
+      width:330px;
+      }
+    
 
   }
+  .btn {
+    position: absolute;
+    right: 0px; 
+    top:10px;
+    background-color: #2a77f4;
+  border-color:#2a77f4 ;
+}
+.btn2{
+  position: absolute;
+  top:10px;
+  right:80px;
+}
 }
 </style>

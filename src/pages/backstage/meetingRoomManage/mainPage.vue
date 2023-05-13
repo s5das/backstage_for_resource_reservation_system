@@ -54,6 +54,7 @@
         </div>
         <div style="display: flex">
           <el-button type="primary" size="default" @click="edit"
+          class="blue"
             >编辑</el-button
           >
           <el-button type="danger" size="default" @click="deleteroom"
@@ -91,7 +92,7 @@
 
             <el-form-item>
               <el-button type="primary" @click="onSubmit">保存</el-button>
-              <el-button @click="show = false">取消</el-button>
+              <el-button type="info" @click="show = false">取消</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -254,6 +255,10 @@ getTableInfo();
 </script>
 
 <style lang="less" scoped>
+.blue{
+   background-color: #2a77f4;
+  border-color:#2a77f4 ;
+}
 .info {
   display: flex;
   height: 600px;
@@ -306,3 +311,5 @@ getTableInfo();
   }
 }
 </style>
+
+

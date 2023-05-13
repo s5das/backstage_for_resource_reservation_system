@@ -44,7 +44,7 @@
     </el-table>
 
   </div>
-  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="false" :showsave="true" :showreject="false" />
+  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="false" :showsave="false" :showreject="false" />
   <div class="pagecontroler">
     <el-pagination
       background
@@ -59,10 +59,6 @@
 <script setup>
 import {getInfoByPage} from '../../../http/api/order'
 let isshow = ref(false)
-
-const getditail = () => {
-  isshow.value = true;
-};
 
 const tableData = ref([]);
 
@@ -109,6 +105,7 @@ const getinfo = () => {
 
 let orderId = ref('')
 let meetingRoomId = ref('')
+
 const getdetail = (data)=>{
   meetingRoomId.value = data.row.roomId
   orderId.value = data.row.id

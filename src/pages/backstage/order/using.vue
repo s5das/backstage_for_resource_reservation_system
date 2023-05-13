@@ -44,7 +44,7 @@
             link
             type="primary"
             size="small"
-            @click.prevent="getdetail(scope)"
+            @click.prevent="getreject(scope)"
             style="color: red"
           >
             驳回
@@ -55,6 +55,8 @@
 
   </div>
   <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="false" :showreject="true" />
+  <Reject :status="1" v-if="isreject" @close="isreject=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId"></Reject>
+
   <div class="pagecontroler">
     <el-pagination
       background
@@ -69,10 +71,7 @@
 <script setup>
 import {getInfoByPage} from '../../../http/api/order'
 let isshow = ref(false)
-
-const getditail = () => {
-  isshow.value = true;
-};
+let isreject =ref(false)
 
 const tableData = ref([]);
 
@@ -83,9 +82,6 @@ let page = ref(1);
 const pagechange = () => {
   getinfo()
 }
-
-
-
 
 let search_name = "";
 let search_partment = "";
@@ -119,6 +115,14 @@ const getinfo = () => {
 
 let orderId = ref('')
 let meetingRoomId = ref('')
+
+const getreject = (data)=>{
+  console.log(data.row.roomId);
+  meetingRoomId.value = data.row.roomId
+  orderId.value = data.row.id
+  isreject.value=true
+}
+
 const getdetail = (data)=>{
   console.log(data.row.roomId);
   meetingRoomId.value = data.row.roomId

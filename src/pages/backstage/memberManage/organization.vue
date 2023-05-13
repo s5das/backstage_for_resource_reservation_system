@@ -1,6 +1,5 @@
 <template>
   <SearchArea2 @submit="submit" @addnew="addnew" ref="search_area" />
-
   <div class="table-area" style="padding-left: 20px">
     <el-table :data="tableData" 
     style="width: 100%" 
@@ -73,9 +72,7 @@
     <div class="new">
       <div class="head">
         <div>管理成员</div>
-        <div>
-          <el-icon :size="15" @click="show3 = false"><CloseBold /></el-icon>
-        </div>
+      <div><el-icon :size="15" @click="show3 = false"><CloseBold /></el-icon></div>
       </div>
       <div class="form-area2">
         <el-form :model="form_add" label-width="80px" :inline="false">
@@ -84,7 +81,7 @@
           </el-form-item>
 
           <el-form-item label="组织类型">
-            <el-select v-model="form_add.type">
+            <el-select v-model="form_add.type" >
               <el-option
                 v-for="item in options"
                 :key="item.value"
@@ -98,12 +95,15 @@
             <el-input v-model="form_add.person"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button type="primary" @click="addneworg">新建组织</el-button>
+            <el-button type="info" size="default" @click="show3 = false" class="btn2">取消</el-button>
+            <el-button type="primary" @click="addneworg" class="btn">保存</el-button>
           </el-form-item>
         </el-form>
       </div>
     </div>
+     
   </div>
+ 
 </template>
 
 <script setup>
@@ -120,6 +120,8 @@ import {getTypeList} from "../../../http/api/memberManage"
 let props = defineProps(["departmentTypeId"]);
 let search_area = ref();
 console.log(props.departmentTypeId);
+
+let isdelete=ref(false);
 
 watch(
   () => props.departmentTypeId,
@@ -233,9 +235,11 @@ const changestatus = async (val) => {
 };
 
 const delpartment = (val) => {
-  ElMessageBox.confirm("是否确认删除？", "确认删除", {
-    confirmButtonText: "确认",
+  ElMessageBox.confirm("是否确认删除？", "删除确认", {
+    confirmButtonText: "删除",
     cancelButtonText: "取消",
+    confirmButtonClass: 'el-button--danger',
+  cancelButtonClass: 'el-button--info',
     type: "warning",
   }).then(() => {
     removeAdmin(val.id).then(() => {
@@ -248,6 +252,13 @@ getinfo();
 </script>
 
 <style lang="less" scoped>
+
+.el-select {
+  width: 250px;
+}
+.el-input{
+  width: 250px;
+}
 .table-area {
   height: 400px;
   overflow-y: scroll;
@@ -280,9 +291,9 @@ getinfo();
 .new {
   position: absolute;
   top: 250px;
-  left: 700px;
+  left: 800px;
   padding: 10px;
-  height: 350px;
+  height: 300px;
   width: 350px;
   z-index: 999;
   background-color: #fff;
@@ -293,8 +304,41 @@ getinfo();
   margin-top: 30px;
 }
 .head {
-  height: 80px;
+  height: 60px;
   display: flex;
   justify-content: space-between;
 }
+  .btn {
+    position: absolute;
+    right: 20px; 
+    top:10px;
+     background-color: #2a77f4;
+  border-color:#2a77f4 ;
+}
+.btn2{
+  position: absolute;
+  top:10px;
+  right:100px
+}
+</style>
+
+<style >
+.el-message-box {
+    --el-messagebox-width: 350px !important;
+    height:200px !important;
+  }
+  .el-message-box__btns{
+    margin-top:50px ;
+  }
+  .el-message-box__status.el-message-box-icon--warning{
+    color:#a92525;
+  }
+
+  .el-message-box__btns .el-button--danger {
+    background-color: #f56c6c;
+  color: #fff;
+  border-color: #f56c6c;
+}
+
+
 </style>

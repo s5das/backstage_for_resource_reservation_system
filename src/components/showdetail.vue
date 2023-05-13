@@ -67,19 +67,7 @@
               <div style="margin-bottom: 15px;">WiFi：{{ item2.hasWifi?"提供WiFi":"不提供WiFi" }}</div>
               <div style="margin-bottom: 15px;">其他信息：{{ item2.otherInfo||"无" }}</div>
             </div>
-            <!-- <div class="right-3">
-              <div class="textarea">
-                <div class="label">驳回理由：</div>
-                <div class="input">
-                  <el-input
-                    v-model="textarea3"
-                    :rows="2"
-                    type="textarea"
-                    placeholder="Please input"
-                  />
-                </div>
-              </div>
-            </div> -->
+    
           </div>
           <div class="left">
             <div class="box1">
@@ -163,17 +151,6 @@
                   />
                 </div>
               </div>
-              <!-- <div class="textarea">
-                <div class="label">管理员备注：</div>
-                <div class="input">
-                  <el-input
-                    v-model="textarea2"
-                    :rows="2"
-                    type="textarea"
-                    placeholder="Please input"
-                  />
-                </div>
-              </div> -->
             </div>
             <div class="btn-area">
               <el-button
@@ -182,16 +159,18 @@
                 @click="passItem"
                 style="margin: 5px"
                 v-if="showpass"
+                class="blue"
                 >通过</el-button
               >
-              <el-button
+              <!-- <el-button
                 type="primary"
                 size="default"
                 @click="saveItem"
                 style="margin: 5px"
                 v-if="showsave"
+                class="blue"
                 >保存</el-button
-              >
+              > -->
               <el-button 
               type="danger" 
               size="default" 
@@ -213,9 +192,9 @@ import { getDetail, pass, save, cancel } from "../http/api/order";
 import {getInfoById} from "../http/api/meetingRoom"
 const emits = defineEmits(["close",'refresh']);
 const props = defineProps(["status", "showpass", "showreject", "showsave","id","meetingRoomId"]);
-let textarea1 = ref("");
-let textarea2 = ref("");
-let textarea3 = ref("");
+let textarea1 = ref(" ");
+let textarea2 = ref(" ");
+let textarea3 = ref(" ");
 
 let item = ref({});
 
@@ -240,7 +219,7 @@ const passItem = () => {
 };
 
 const saveItem = () => {
-      save(props.id,textarea2.value)
+      save(props.id," ")
     .then(
       ()=>{
         ElMessage({
@@ -253,7 +232,6 @@ const saveItem = () => {
   }
 
 const rejectItem = ()=>{
-
   ElMessageBox.confirm("是否确认驳回？", "通过驳回", {
     confirmButtonText: "确定",
     cancelButtonText: "取消",
@@ -261,7 +239,7 @@ const rejectItem = ()=>{
   })
   .then(
     ()=>{
-      return cancel(props.id,textarea3.value)
+      return cancel(props.id,"")
     }
   )
   .then(
@@ -291,8 +269,9 @@ onMounted(() => {
 </script>
 
 <style lang="less" scoped>
-.el-button {
-font-size: 13px;
+.blue{
+  background-color: #2a77f4;
+  border-color:#2a77f4 ;
 }
 .mask {
   position: fixed;
