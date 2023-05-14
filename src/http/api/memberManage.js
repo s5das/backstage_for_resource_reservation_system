@@ -30,7 +30,8 @@ export const modifyAdiminInfo = (
   departmentName,
   departmentTypeId,
   id,
-  leaderName
+  leaderName,
+  mobile
 ) => {
   return serviceAxios({
     method: "put",
@@ -40,6 +41,7 @@ export const modifyAdiminInfo = (
       departmentTypeId,
       id,
       leaderName,
+      mobile
     },
   });
 };

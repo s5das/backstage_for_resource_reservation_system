@@ -65,7 +65,7 @@
             link
             type="primary"
             size="small"
-            @click.prevent="getdetail(scope)"
+            @click.prevent="getpass(scope)"
           >
             通过
           </el-button>
@@ -73,7 +73,7 @@
             link
             type="primary"
             size="small"
-            @click.prevent="getdetail(scope)"
+            @click.prevent="getreject(scope)"
             style="color: red"
           >
             驳回
@@ -83,7 +83,10 @@
     </el-table>
 
   </div>
-  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="true" :showreject="true" />
+  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="true" :showreject="true" :showsave="false" />
+  <Pass :status="1" v-if="ispass" @close="ispass=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId"></Pass>
+  <Reject :status="1" v-if="isreject" @close="isreject=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId"></Reject>
+  
   <div class="pagecontroler">
     <el-pagination
       background
@@ -98,10 +101,9 @@
 <script setup>
 import {getInfoByPage} from '../../../http/api/order'
 let isshow = ref(false)
+let ispass= ref(false)
+let isreject= ref(false)
 
-const getditail = () => {
-  isshow.value = true;
-};
 
 const tableData = ref([]);
 
@@ -153,7 +155,18 @@ const getdetail = (data)=>{
   orderId.value = data.row.id
   isshow.value = true
 }
-
+const getpass = (data)=>{
+  console.log(data.row.roomId);
+  meetingRoomId.value = data.row.roomId
+  orderId.value = data.row.id
+  ispass.value=true;
+}
+const getreject = (data)=>{
+  console.log(data.row.roomId);
+  meetingRoomId.value = data.row.roomId
+  orderId.value = data.row.id
+  isreject.value=true;
+}
 
 
 

@@ -8,20 +8,20 @@
               <el-input v-model="formInline.or_name" placeholder="请输入" />
             </el-form-item>
           </div>
-          <div style="flex: 1">
+          <div style="margin-right:550px">
             <el-form-item label="成员名称" prop="me_name">
               <el-input v-model="formInline.me_name" placeholder="请输入" />
             </el-form-item>
           </div>
-          <div style="flex: 1">
+          <div >
             <el-form-item>
-              <el-button type="primary" @click="onSubmit()">查询</el-button>
-              <el-button type="primary" @click="reset(form)">重置</el-button>
+              <el-button class="blue" type="primary" @click="onSubmit()" style="width: 70px; height: 30px">查询</el-button>
+              <el-button class="blue" type="primary" @click="reset(form)" style="width: 70px; height: 30px">重置</el-button>
             </el-form-item>
           </div>
           <div style="flex: 1">
             <el-form-item>
-              <el-button type="primary" @click="addnew">新建组织</el-button>
+              <el-button class="blue" type="primary" @click="addnew" style="width: 98px; height: 30px">新建组织</el-button>
             </el-form-item>
           </div>
         </div>
@@ -59,6 +59,10 @@ defineExpose({
 </script>
 
 <style lang="less" scoped>
+.blue{
+  background-color: #2a77f4;
+  border-color:#2a77f4 ;
+}
 .serch-area {
   height: 70px;
   display: flex;
