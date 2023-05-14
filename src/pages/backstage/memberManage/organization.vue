@@ -1,5 +1,6 @@
 <template>
   <SearchArea2 @submit="submit" @addnew="addnew" ref="search_area" />
+  
   <div class="table-area" style="padding-left: 20px">
     <el-table :data="tableData" 
     style="width: 100%" 
@@ -94,19 +95,21 @@
           <el-form-item label="负责人">
             <el-input v-model="form_add.person"></el-input>
           </el-form-item>
-          <el-form-item>
-            <el-button type="info" size="default" @click="show3 = false" class="btn2">取消</el-button>
-            <el-button type="primary" @click="addneworg" class="btn">保存</el-button>
-          </el-form-item>
         </el-form>
       </div>
+      <div class="button">
+            <el-button type="info" size="default" @click="show3 = false" class="btn2" style="width:93.8px;height:40.2px">取消</el-button>
+            <el-button type="primary" @click="addneworg" class="btn" style="width:93.8px;height:40.2px">保存</el-button>
+      </div>
     </div>
-     
   </div>
- 
+ <Delpart v-if="isdelete" @close="closeDelete" :id="deleteId"/>
 </template>
 
 <script setup>
+
+
+
 import {
   getInfoByPage,
   modifyPartmentIsDisabled,
@@ -173,6 +176,7 @@ const addneworg = () => {
       message: "操作成功",
     });
     show3.value = false;
+    getinfo()
   });
 };
 
@@ -233,19 +237,16 @@ const changestatus = async (val) => {
   await modifyPartmentIsDisabled(val.id);
   getinfo();
 };
+let deleteId=ref("")
+
+const closeDelete=()=>{
+  isdelete.value=false;
+  getinfo()
+}
 
 const delpartment = (val) => {
-  ElMessageBox.confirm("是否确认删除？", "删除确认", {
-    confirmButtonText: "删除",
-    cancelButtonText: "取消",
-    confirmButtonClass: 'el-button--danger',
-  cancelButtonClass: 'el-button--info',
-    type: "warning",
-  }).then(() => {
-    removeAdmin(val.id).then(() => {
-      getinfo();
-    });
-  });
+  deleteId.value=val.id
+  isdelete.value="true"
 };
 
 getinfo();
@@ -294,14 +295,21 @@ getinfo();
   left: 800px;
   padding: 10px;
   height: 300px;
-  width: 350px;
+  width: 400px;
   z-index: 999;
   background-color: #fff;
   border: #bbb 1px solid;
+  .button{
+   
+        display: flex;
+    margin-right: 40px;
+    justify-content: flex-end;
+  }
 }
 .form-area2 {
-  height: 240px;
-  margin-top: 30px;
+      height: 165px;
+    margin-top: 20px;
+    margin-left: 30px;
 }
 .head {
   height: 60px;
@@ -309,16 +317,12 @@ getinfo();
   justify-content: space-between;
 }
   .btn {
-    position: absolute;
-    right: 20px; 
-    top:10px;
+  
      background-color: #2a77f4;
   border-color:#2a77f4 ;
 }
 .btn2{
-  position: absolute;
-  top:10px;
-  right:100px
+
 }
 </style>
 

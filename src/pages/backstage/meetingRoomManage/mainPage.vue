@@ -55,9 +55,10 @@
         <div style="display: flex">
           <el-button type="primary" size="default" @click="edit"
           class="blue"
+          style= "width: 70px; height: 30px;"
             >编辑</el-button
           >
-          <el-button type="danger" size="default" @click="deleteroom"
+          <el-button type="danger" size="default" @click="deleteroom" style= "width: 70px; height: 30px;"
             >删除</el-button
           >
         </div>
@@ -86,15 +87,14 @@
                 <el-icon><Plus /></el-icon>
               </el-upload>
             </el-form-item>
-            <el-form-item label="备注">
-              <el-input v-model="text" type="textarea" :rows="2"></el-input>
-            </el-form-item>
-
-            <el-form-item>
-              <el-button type="primary" @click="onSubmit">保存</el-button>
-              <el-button type="info" @click="show = false">取消</el-button>
+            <el-form-item label="其他信息">
+              <el-input v-model="text" type="textarea" :rows="9"></el-input>
             </el-form-item>
           </el-form>
+            <div class="button">
+               <el-button type="info" @click="show = false" style="width:93.8px;height:40.2px">取消</el-button>
+              <el-button type="primary" @click="onSubmit" style="width:93.8px;height:40.2px">保存</el-button>            
+            </div>
         </div>
       </div>
     </div>
@@ -254,6 +254,17 @@ getinfo();
 getTableInfo();
 </script>
 
+<style>
+.el-upload-list--picture-card .el-upload-list__item{
+  width:224px;
+  height:169px;
+}
+.el-upload--picture-card{
+  width:224px;
+  height:169px;
+
+}
+</style>
 <style lang="less" scoped>
 .blue{
    background-color: #2a77f4;
@@ -300,14 +311,21 @@ getTableInfo();
   z-index: 99;
   .edit-area {
     padding: 10px;
-    height: 500px;
-    width: 700px;
+    height: 557px;
+    width: 822px;
     background-color: #fff;
     .head {
       height: 60px;
       display: flex;
       justify-content: space-between;
     }
+  }
+  .button{
+    margin-top: 32px;
+    width:787.5px;
+    display: flex;
+    justify-content: flex-end;
+    
   }
 }
 </style>

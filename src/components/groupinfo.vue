@@ -54,12 +54,12 @@
 
               <el-col :span="1" :offset="0">
                 <el-form-item>
-                  <el-button class="blue" type="primary" @click="onSearch">查询</el-button>
+                  <el-button class="blue" type="primary" @click="onSearch" style="width: 70px; height: 30px">查询</el-button>
                 </el-form-item>
               </el-col>
               <el-col :span="1" :offset="1">
                 <el-form-item>
-                  <el-button class="blue" type="primary" @click="addnew">新建成员</el-button>
+                  <el-button class="blue" type="primary" @click="addnew" style="width: 98px; height: 30px">添加成员</el-button>
                 </el-form-item>
               </el-col>
             </el-row>
@@ -103,7 +103,7 @@
                 <el-button
                   link
                   type="primary"
-                  @click.prevent="delpartmenember(scope.row)"
+                  @click.prevent="showDelpartmember(scope.row)"
                   style="color: red"
                 >
                   删除
@@ -117,22 +117,21 @@
             <el-col :span="12" :offset="0">
               <div>预约次数：{{times3}} 履约次数：{{times2}} 违约次数：{{times1}}</div>
             </el-col>
-            <el-col :span="4" :offset="8">
-              <el-button  type="info" size="default" @click="emits('close')"
+            <el-col :span="6" :offset="6">
+              <el-button  type="info" size="default" @click="emits('close')" style= "width: 93.8px; height: 40.2px;"
                 >取消</el-button
               >
-              <el-button class="blue" type="primary" size="default" @click="save()"
+              <el-button class="blue" type="primary" size="default" @click="save()" style= "width: 93.8px; height: 40.2px;"
                 >保存</el-button
               >
             </el-col>
           </el-row>
         </div>
-
         <div class="new" v-if="show2">
           <div class="head">
             <div>管理成员</div>
             <div>
-              <el-icon :size="15" @click="show2 = false"><CloseBold /></el-icon>
+              <el-icon :size="15" @click="closeShow2"><CloseBold /></el-icon>
             </div>
           </div>
           <div class="form-area2">
@@ -146,22 +145,23 @@
               <el-form-item label="联系方式">
                 <el-input v-model="add_form.mobile"></el-input>
               </el-form-item>
-              <el-form-item>
-                <el-button type="info" @click="show2 = false" class="btn2">
-                  取消
-                </el-button>
-                <el-button  type="primary" @click="save_gennewmember" class="btn">
-                  保存
-                </el-button>
-              </el-form-item>
+             
             </el-form>
           </div>
+           <div class="button">
+                <el-button type="info" @click="closeShow2" class="btn2"  style="width:93.8px;height:40.2px">
+                  取消
+                </el-button>
+                <el-button  type="primary" @click="save_gennewmember" class="btn" style="width:93.8px;height:40.2px">
+                  保存
+                </el-button>
+              </div>
         </div>
         <div class="new" v-if="show3">
           <div class="head">
             <div>管理成员</div>
             <div>
-              <el-icon :size="15" @click="show3 = false"><CloseBold /></el-icon>
+              <el-icon :size="15" @click="closeShow3"><CloseBold /></el-icon>
             </div>
           </div>
           <div class="form-area2">
@@ -175,16 +175,19 @@
               <el-form-item label="联系方式">
                 <el-input v-model="add_form.mobile"></el-input>
               </el-form-item>
-              <el-form-item>
-                <el-button type="info" @click="show3.value = false" class="btn2">取消</el-button>
-                <el-button type="primary" @click="save_manage" class="btn">保存</el-button>
-              </el-form-item>
+             
             </el-form>
           </div>
+           <div class="button">
+                <el-button type="info" @click="closeShow3" class="btn2" style="width:93.8px;height:40.2px">取消</el-button>
+                <el-button type="primary" @click="save_manage" class="btn" style="width:93.8px;height:40.2px">保存</el-button>
+              </div>
+
         </div>
       </div>
     </div>
   </teleport>
+  <Delmember v-if="isDelpartmember" @close="closeDelpartmember" :id="memberId"></Delmember>
 </template>
 
 <script setup>
@@ -204,8 +207,13 @@ const emits = defineEmits(["close"]);
 const props = defineProps(["id"]);
 
 // add
+
+
+let isDelpartmember= ref(false);
+
 let show2 = ref(false);
 let show3 = ref(false);
+
 let add_form = reactive({
   name: "",
   id: "",
@@ -213,6 +221,20 @@ let add_form = reactive({
   userid: "",
 });
 
+
+
+const closeDelpartmember=()=>{
+  isDelpartmember.value= false;
+  getinfo();
+}
+
+const closeShow3=()=>{
+  show3.value=false;
+}
+
+const closeShow2=()=>{
+  show2.value=false;
+}
 const addnew = () => {
   add_form.name = "";
   add_form.id = "";
@@ -222,7 +244,8 @@ const addnew = () => {
 };
 
 const save_gennewmember = () => {
-  addPartmentmember(props.id, add_form.mobile, add_form.id, add_form.name).then(
+  addPartmentmember(props.id, add_form.mobile, add_form.id, add_form.name)
+  .then(
     () => {
       ElMessage({
         type: "success",
@@ -286,7 +309,7 @@ const getinfo = () => {
     form.name = res.item.departmentName;
     form.type = res.item.departmentTypeId;
     form.person = res.item.leaderName;
-    form.personMobile =res.item.leaderMobile; //新增从服务器中获取负责人电话
+    form.personMobile =res.item.mobile; //新增从服务器中获取负责人电话
     title.value = res.item.departmentName;
   });
 };
@@ -356,25 +379,11 @@ const save_manage = () => {
   });
 };
 
-const delpartmenember = (val) => {
-  removeMember(val.id).then(() => {
-    ElMessageBox.confirm("是否确认删除？", "删除确认", {
-    confirmButtonText: "确认",
-    cancelButtonText: "取消",
-    type: "warning",
-  }).then(
+const memberId=ref('');
 
-    ()=>{
-        ElMessage({
-        type: "success",
-        message: "操作成功",
-        });
-        getinfo();
-    }
-
-  )
-
-  });
+const showDelpartmember = (val) => {
+  memberId.value=val.id;
+  isDelpartmember.value= true;
 };
 
 const save = () => {
@@ -433,36 +442,45 @@ getinfo();
       height: 50px;
       margin-top: 10px;
     }
+    // .new2{
+    //   position: absolute;
+    //   top: 150px;
+    //   left: 325px;
+    //   padding: 10px;
+    //   z-index: 999;
+      
+    //   background-color: #fff;
+    //   border: #bbb 1px solid;
+    // }
     .new {
       position: absolute;
       top: 150px;
       left: 325px;
       padding: 10px;
       height: 300px;
-      width: 350px;
+      width: 400px;
       z-index: 999;
       background-color: #fff;
       border: #bbb 1px solid;
-      
+      .button{
+      display: flex;
+    margin-right: 30px;
+    justify-content: flex-end;
+      }
     }
     .form-area2 {
-      height: 240px;
-      width:330px;
+       height: 165px;
+    margin-top: 10px;
+    margin-left: 20px;   
       }
-    
-
   }
   .btn {
-    position: absolute;
-    right: 0px; 
-    top:10px;
+   
     background-color: #2a77f4;
   border-color:#2a77f4 ;
 }
 .btn2{
-  position: absolute;
-  top:10px;
-  right:80px;
+  
 }
 }
 </style>

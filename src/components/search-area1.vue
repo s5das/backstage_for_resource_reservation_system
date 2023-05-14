@@ -30,8 +30,8 @@
           </div>
           <div class="item">
             <el-form-item>
-              <el-button class="blue" type="primary" @click="onSubmit()">查询</el-button>
-              <el-button class="blue" type="primary" @click="reset(form)">重置</el-button>
+              <el-button class="blue" type="primary" @click="onSubmit()" style="width: 70px; height: 30px">查询</el-button>
+              <el-button class="blue" type="primary" @click="reset(form)" style="width: 70px; height: 30px">重置</el-button>
             </el-form-item>
           </div>
         </div>

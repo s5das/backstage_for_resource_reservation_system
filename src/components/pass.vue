@@ -4,7 +4,7 @@
       <div class="content">
         <div class="head">
           <img src="../assets/pass.png" width="30" height="30" > 
-           &nbsp;管理员备注
+           &nbsp;管理员备注:
         </div>
         <div class="bottom" > 
                 <div class="input">
@@ -20,15 +20,15 @@
                 type="info"
                 size="default"
                 @click="emits('close')"  
-                style=" margin: 5px"
+                style="margin: 5px; width: 93.8px; height: 40.2px;margin-right:21.44px; margin-top:14.06px"
                 >取消</el-button
               >
                 <el-button
                 type="primary"
                 size="default"
                 @click="passItem"
-                style="margin: 5px"
                 class="blue"
+                style="margin: 5px; width: 93.8px; height: 40.2px; margin-top:14.06px"
                 >通过</el-button
               >
            
@@ -92,8 +92,8 @@ const passItem = () => {
   z-index: 99;
 }
 .content {
-  height: 300px;
-  width: 470px;
+  height: 309px;
+  width: 666px;
   background-color: #fff;
   padding-left: 30px;
     .head {

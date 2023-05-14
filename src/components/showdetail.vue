@@ -157,7 +157,7 @@
                 type="primary"
                 size="default"
                 @click="passItem"
-                style="margin: 5px"
+                style="margin: 5px ;width: 93.8px; height: 40.2px;"
                 v-if="showpass"
                 class="blue"
                 >通过</el-button
@@ -176,7 +176,7 @@
               size="default" 
               @click="rejectItem"
               v-if="showreject"
-              style="margin:5px">
+              style="margin:5px;width: 93.8px; height: 40.2px;">
               驳回</el-button>
             </div>
           </div>          
@@ -199,14 +199,7 @@ let textarea3 = ref(" ");
 let item = ref({});
 
 const passItem = () => {
-  ElMessageBox.confirm("是否确认通过？", "通过确认", {
-    confirmButtonText: "确定",
-    cancelButtonText: "取消",
-    type: "warning",
-  })
-    .then(() => {
-      return pass(props.id);
-    })
+    pass(props.id)
     .then(() => {
       ElMessage({
         type: "success",
@@ -232,16 +225,7 @@ const saveItem = () => {
   }
 
 const rejectItem = ()=>{
-  ElMessageBox.confirm("是否确认驳回？", "通过驳回", {
-    confirmButtonText: "确定",
-    cancelButtonText: "取消",
-    type: "warning",
-  })
-  .then(
-    ()=>{
-      return cancel(props.id,"")
-    }
-  )
+  cancel(props.id,"")
   .then(
     ()=>{
       ElMessage({

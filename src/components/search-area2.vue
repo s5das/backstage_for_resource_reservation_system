@@ -15,13 +15,13 @@
           </div>
           <div >
             <el-form-item>
-              <el-button class="blue" type="primary" @click="onSubmit()">查询</el-button>
-              <el-button class="blue" type="primary" @click="reset(form)">重置</el-button>
+              <el-button class="blue" type="primary" @click="onSubmit()" style="width: 70px; height: 30px">查询</el-button>
+              <el-button class="blue" type="primary" @click="reset(form)" style="width: 70px; height: 30px">重置</el-button>
             </el-form-item>
           </div>
           <div style="flex: 1">
             <el-form-item>
-              <el-button class="blue" type="primary" @click="addnew">新建组织</el-button>
+              <el-button class="blue" type="primary" @click="addnew" style="width: 98px; height: 30px">新建组织</el-button>
             </el-form-item>
           </div>
         </div>
