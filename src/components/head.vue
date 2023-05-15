@@ -26,6 +26,7 @@ console.log(props);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   .title {
     width: 300px;
     text-align: center;
