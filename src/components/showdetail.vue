@@ -283,7 +283,7 @@ onMounted(() => {
   flex-flow: column;
   .label {
     flex: 1.5;
-    padding-bottom:10px ;
+    padding-bottom:8px ;
   }
   .input {
     flex: 4;
@@ -314,7 +314,7 @@ onMounted(() => {
       .box1 {
         // flex: 3;
         display: flex;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
         div {
           .text{
             width:252px;
