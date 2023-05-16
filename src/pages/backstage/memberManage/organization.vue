@@ -3,8 +3,8 @@
   
   <div class="table-area" style="padding-left: 20px">
     <el-table :data="tableData" 
-    style="width: 100%" 
-    height="480"  
+    style="width: 100%"  
+   
     :header-cell-style="{color: '#000000','text-align':'center'}" 
     :cell-style="{'text-align':'center'}"
     :row-style="{height:'50px'}">
@@ -25,7 +25,7 @@
         property="members"
         label="绑定成员"
         width="260"
-        show-overflow-tooltip
+        show-overflow-tooltip 
       />
 
       <el-table-column label="操作" width="280">
@@ -261,8 +261,9 @@ getinfo();
   width: 250px;
 }
 .table-area {
-  height: 400px;
+  height: 58vh;
   overflow-y: scroll;
+ 
 }
 .serch-area {
   height: 70px;
@@ -321,9 +322,7 @@ getinfo();
      background-color: #2a77f4;
   border-color:#2a77f4 ;
 }
-.btn2{
 
-}
 </style>
 
 <style >

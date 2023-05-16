@@ -3,7 +3,7 @@
     <div class="mask">
       <div class="content">
         <div class="head">
-          预约单详情
+          <strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;预约单详情</strong>
           <el-icon :size="20" @click="emits('close')"><CloseBold /></el-icon>
         </div>
         <div class="bottom">
@@ -11,7 +11,8 @@
             <div class="right-1">
               <div class="a">
                 <el-image
-                  style="width: 200px; height: 150px"
+                  class="rounded-image"
+                  style="width: 224px; height: 169px"
                   :src="item2.avatar"
                   fit="fill"
                   :lazy="true"
@@ -32,6 +33,7 @@
                     flex: 1;
                     width: 200px;
                     font-weight: 800
+                    margin-bottom: 5px;
                   "
                 >
                   {{ item.roomName }}
@@ -43,6 +45,7 @@
                       overflow: hidden;
                       text-overflow: ellipsis;
                       width: 200px;
+                      margin-bottom: 5px;
                     "
                   >
                     地点：{{ item2.buildingName }}
@@ -53,6 +56,7 @@
                       overflow: hidden;
                       text-overflow: ellipsis;
                       width: 200px;
+                      margin-bottom: 5px;
                     "
                   >
                     开放时间: {{ item2.openTime +'-'+ item2.closeTime }}
@@ -61,52 +65,52 @@
               </div>
             </div>
             <div class="right-2">
-              <div style="margin-bottom: 15px;">可容纳人数：{{ item2.capacity }}人</div>
-              <div style="margin-bottom: 15px;">投影：{{ item2.hasProjector?"提供投影":"不提供投影" }}</div>
-              <div style="margin-bottom: 15px;">电脑：{{ item2.hasComputer?"提供电脑": "不提供电脑"}}</div>
-              <div style="margin-bottom: 15px;">WiFi：{{ item2.hasWifi?"提供WiFi":"不提供WiFi" }}</div>
-              <div style="margin-bottom: 15px;">其他信息：{{ item2.otherInfo||"无" }}</div>
+              <div style="margin-bottom: 5px;">可容纳人数：{{ item2.capacity }}人</div>
+              <div style="margin-bottom: 5px;">投影：{{ item2.hasProjector?"提供投影":"不提供投影" }}</div>
+              <div style="margin-bottom: 5px;">电脑：{{ item2.hasComputer?"提供电脑": "不提供电脑"}}</div>
+              <div style="margin-bottom: 5px;">WiFi：{{ item2.hasWifi?"提供WiFi":"不提供WiFi" }}</div>
+              <div style="margin-bottom: 5px;">其他信息：{{ item2.otherInfo||"无" }}</div>
             </div>
     
           </div>
           <div class="left">
             <div class="box1">
             
-              <div>
+              <div  style='width:286px'>
                 <div class="hengzhi">
-                  <div class="table"> &nbsp预约单号</div>
-                  <div class="text">&nbsp{{ item.orderNo }}</div>
+                  <div class="table"> 预约单号</div>
+                  <div class="text">{{ item.orderNo }}</div>
                 </div>
 
                 <div class="hengzhi">
-                <div class="table"> &nbsp发起时间 </div>
-                <div class="text">&nbsp{{ item.createTime }}</div>
+                <div class="table"> 发起时间 </div>
+                <div class="text">{{ item.createTime }}</div>
                 </div>
 
                 <div class="hengzhi">
-                  <div class="table"> &nbsp预约人 </div>
-                  <div class="text">&nbsp{{ item.username }}</div>
+                  <div class="table"> 预约人 </div>
+                  <div class="text">{{ item.username }}</div>
                 </div>
 
                 <div class="hengzhi">
-                  <div class="table"> &nbsp学号 </div>
-                  <div class="text">&nbsp{{ item.userId }}</div>
+                  <div class="table"> 学号 </div>
+                  <div class="text">{{ item.userId }}</div>
                 </div>
 
                 <div class="hengzhi">
-                  <div class="table"> &nbsp归属组织 </div>
-                  <div class="text">&nbsp{{ item.departmentName }}</div>
+                  <div class="table"> 归属组织 </div>
+                  <div class="text">{{ item.departmentName }}</div>
                 </div>
 
-                <div class="hengzhi">
-                  <div class="table"> &nbsp联系方式 </div>
-                  <div class="text">&nbsp{{ item.mobile }}</div>
+                <div class="hengzhi1">
+                  <div   class="table"> 联系方式 </div>
+                  <div class="text">{{ item.mobile }}</div>
                 </div>
               </div>
-              <div>
+              <div  style='width:386px'>
                 <div class="hengzhi">
-                  <div class="table"> &nbsp预约单状态 </div>
-                  <div class="text">&nbsp{{
+                  <div class="table"> 预约单状态 </div>
+                  <div class="text">{{
                     item.status == "0"
                       ? "待审批"
                       : item.status == "1"
@@ -117,24 +121,24 @@
                   }}</div>
                 </div>
                 <div class="hengzhi">
-                  <div class="table"> &nbsp使用单位 </div>
-                  <div class="text">&nbsp{{ item.useDepartmentName }}</div>
+                  <div class="table"> 使用单位 </div>
+                  <div class="text">{{ item.useDepartmentName }}</div>
                 </div>
                 <div class="hengzhi">
-                  <div class="table"> &nbsp预约会议室 </div>
-                  <div class="text">&nbsp{{ item.roomName }}</div>
+                  <div class="table"> 预约会议室 </div>
+                  <div class="text">{{ item.roomName }}</div>
                 </div>
                 <div class="hengzhi">
-                  <div class="table"> &nbsp预约时间 </div>
-                  <div class="text">&nbsp{{ item.startTime + "-" + item.endTime }}</div>
+                  <div class="table"> 预约时间 </div>
+                  <div class="text">{{ item.startTime + "-" + item.endTime }}</div>
                 </div>
                 <div class="hengzhi">
-                  <div class="table"> &nbsp使用人数 </div>
-                  <div class="text">&nbsp{{ item.userNumber }}</div>
+                  <div class="table"> 使用人数 </div>
+                  <div class="text">{{ item.userNumber }}</div>
                 </div>
                 <div class="hengzhi">
-                  <div class="table"> &nbsp会议室主题 </div>
-                  <div class="text">&nbsp{{ item.title }}</div>
+                  <div class="table"> 会议室主题 </div>
+                  <div class="text">{{ item.title }}</div>
                 </div>
               </div>
             </div>
@@ -253,6 +257,9 @@ onMounted(() => {
 </script>
 
 <style lang="less" scoped>
+.rounded-image {
+  border-radius: 8px;
+}
 .blue{
   background-color: #2a77f4;
   border-color:#2a77f4 ;
@@ -276,16 +283,17 @@ onMounted(() => {
   flex-flow: column;
   .label {
     flex: 1.5;
+    padding-bottom:8px ;
   }
   .input {
     flex: 4;
   }
 }
 .content {
-  height: 600px;
-  width: 870px;
+  height: 567px;
+  width: 1000px;
   background-color: #fff;
-  padding-left: 30px;
+  // padding-left: 30px;
   .head {
     padding: 10px;
     height: 30px;
@@ -302,47 +310,62 @@ onMounted(() => {
       display: flex;
       flex-direction: column;
       padding: 10px;
+      padding-top:21px;
       .box1 {
         // flex: 3;
         display: flex;
-        margin-bottom: 15px;
+        margin-bottom: 8px;
         div {
           .text{
-            width:200px
+            width:252px;
+            padding-left: 8px;
+            align-items: center;
+            display: flex;
+            text-align: left;
           }
           .table{
             text-align: left;
-            width: 90px;
-            height: 40px;
+            width: 134px;
+           display: flex;
+          align-items: center;
             margin-right: auto;    
-            background-color: #bbb;
+            background-color: #E5E5E5;
+            padding-left: 8px;
+           
           }
           .hengzhi{
             display: flex;
             flex-direction: row;
+          
           }
-          margin: -1px;
-          border: solid 1px black;
-          // display: flex;
-          // flex-direction: column;
-          // justify-content: space-around;
+          .hengzhi1{
+             display: flex;
+            flex-direction: row;
+            height: calc(100% - 205px);
+            
+          }
+         border: solid 1px #666666;
+            margin:-1px;
           line-height: 40px;
         }
       }
       .box2 {
-        flex: 1.5;
+        // flex: 1.5;
+        width: 675px;
       }
       .btn-area {
         flex: 1;
         display: flex;
         justify-content: flex-end;
+        padding-right: 15px;
       }
     }
     .right {
       height: 500px;
-      padding: 10px;
+      padding: 30px;
       display: flex;
       flex-direction: column;
+      padding-top: 21px;
       // flex: 1;
       .right-1 {
         // display: flex;

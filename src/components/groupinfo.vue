@@ -71,7 +71,7 @@
           border 
           stripe 
           height="340" 
-          :header-cell-style="{background:'#bbb',color:'black'}"> 
+          :header-cell-style="{background:'#E5E5E5',color:'black',}"> 
             <el-table-column
               v-for="col in columns"
               :prop="col.id"
@@ -329,7 +329,7 @@ let columns = [
   {
     id: "mobile",
     label: "联系方式",
-    width: "150",
+    width: "160",
   },
   {
     id: "timesSum",

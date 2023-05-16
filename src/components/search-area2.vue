@@ -3,12 +3,12 @@
     <div style="width: 100%">
       <el-form :inline="true" :model="formInline" ref="form">
         <div style="display: flex">
-          <div style="flex: 1">
+          <div style="margin-right:120px">
             <el-form-item label="组织名称" prop="or_name">
               <el-input v-model="formInline.or_name" placeholder="请输入" />
             </el-form-item>
           </div>
-          <div style="margin-right:550px">
+          <div style="margin-right:100px">
             <el-form-item label="成员名称" prop="me_name">
               <el-input v-model="formInline.me_name" placeholder="请输入" />
             </el-form-item>
@@ -19,7 +19,7 @@
               <el-button class="blue" type="primary" @click="reset(form)" style="width: 70px; height: 30px">重置</el-button>
             </el-form-item>
           </div>
-          <div style="flex: 1">
+          <div >
             <el-form-item>
               <el-button class="blue" type="primary" @click="addnew" style="width: 98px; height: 30px">新建组织</el-button>
             </el-form-item>

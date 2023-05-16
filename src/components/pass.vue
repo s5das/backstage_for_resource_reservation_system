@@ -4,7 +4,7 @@
       <div class="content">
         <div class="head">
           <img src="../assets/pass.png" width="30" height="30" > 
-           &nbsp;管理员备注:
+           &nbsp;&nbsp;&nbsp;&nbsp;管理员备注:
         </div>
         <div class="bottom" > 
                 <div class="input">
@@ -97,7 +97,7 @@ const passItem = () => {
   background-color: #fff;
   padding-left: 30px;
     .head {
-    padding: 10px;
+    padding: 15px;
     padding-left: 0px;
     height: 30px;
     display: flex;

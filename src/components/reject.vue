@@ -4,7 +4,7 @@
       <div class="content">
         <div class="head">
           <img src="../assets/reject.png" width="34" height="30" > 
-           &nbsp;驳回理由:
+           &nbsp;&nbsp;&nbsp;&nbsp;请输入驳回理由:
         </div>
         <div class="bottom" > 
                 <div class="input">
@@ -82,7 +82,7 @@
       background-color: #fff;
       padding-left: 30px;
         .head {
-        padding: 10px;
+        padding: 15px;
         padding-left: 0px;
         height: 30px;
         display: flex;
