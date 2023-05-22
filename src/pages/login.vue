@@ -2,7 +2,7 @@
 <template>
   <div class="main">
     <div class="box">
-      <div class="title">员工登录</div>
+      <div class="title">会议室预约系统后台</div>
       <el-form :model="formEl" ref="form" :inline="false" :rules="rules">
         <el-form-item   prop="username" >
           <span>用户名</span>
