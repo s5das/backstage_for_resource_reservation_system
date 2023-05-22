@@ -292,8 +292,8 @@ getinfo();
 }
 .new {
   position: absolute;
-  top: 250px;
-  left: 800px;
+  top: 35%;
+  left: 40%;
   padding: 10px;
   height: 300px;
   width: 400px;

@@ -83,7 +83,7 @@
     </el-table>
 
   </div>
-  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="true" :showreject="true" :showsave="false" />
+  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="true" :showreject="true" :showsave="false" :passReason="false" :reReason="false" :rows="5" :boxWidth="674"/>
   <Pass :status="1" v-if="ispass" @close="ispass=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId"></Pass>
   <Reject :status="1" v-if="isreject" @close="isreject=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId"></Reject>
   

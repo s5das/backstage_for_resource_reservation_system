@@ -48,14 +48,7 @@ const props = defineProps(["status", "id","meetingRoomId"]);
 let textarea2 = ref("");
 
 const passItem = () => {
-  ElMessageBox.confirm("是否确认通过？", "通过确认", {
-    confirmButtonText: "确定",
-    cancelButtonText: "取消",
-    type: "warning",
-  })
-    .then(() => {
-      return pass(props.id);
-    })
+    return pass(props.id)  
     .then(()=>{
       return save(props.id,textarea2.value);
     })
@@ -65,8 +58,7 @@ const passItem = () => {
         message: "操作成功",
       });
       emits("close");
-      emits('refresh')
-      
+      emits('refresh')    
     });
 };
 

@@ -54,7 +54,7 @@
     </el-table>
 
   </div>
-  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="false" :showreject="true" />
+  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="false" :showreject="true" :passReason="true" :reReason="false" :rows="5" />
   <Reject :status="1" v-if="isreject" @close="isreject=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId"></Reject>
 
   <div class="pagecontroler">

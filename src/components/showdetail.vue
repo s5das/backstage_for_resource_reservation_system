@@ -144,19 +144,38 @@
             </div>
 
             <div class="box2">
-              <div class="textarea">
+              <div class="textarea" style="margin-right: 30px" v-bind:style="{ width: boxWidth + 'px' }">
                 <div class="label">用户备注：</div>
                 <div class="input">
                   <el-input
                     v-model="textarea1"
-                    :rows="5"
-                    type="textarea"
-                    disabled
+                    :rows="rows"
+                    type="textarea"                 
                   />
                 </div>
               </div>
-            </div>
-            <div class="btn-area">
+                <div class="textarea" v-if="passReason">
+                  <div class="label">通过备注：</div>
+                  <div class="input">
+                  <el-input
+                    v-model="textarea2"
+                    :rows="5"
+                    type="textarea"               
+                  />
+                  </div>
+                </div>
+                <div class="textarea" v-if="reReason">
+                  <div class="label">驳回理由：</div>
+                  <div class="input">
+                 <el-input
+                    v-model="textarea3"
+                    :rows="5"
+                    type="textarea"
+                    
+                  />
+                </div>
+                </div>
+                <div class="btn-area" style="margin-top:15px">
               <el-button
                 type="primary"
                 size="default"
@@ -183,6 +202,9 @@
               style="margin:5px;width: 93.8px; height: 40.2px;">
               驳回</el-button>
             </div>
+
+            </div>
+  
           </div>          
         </div>
       </div>
@@ -195,7 +217,7 @@ import { CloseBold, Picture as IconPicture } from "@element-plus/icons-vue";
 import { getDetail, pass, save, cancel } from "../http/api/order";
 import {getInfoById} from "../http/api/meetingRoom"
 const emits = defineEmits(["close",'refresh']);
-const props = defineProps(["status", "showpass", "showreject", "showsave","id","meetingRoomId"]);
+const props = defineProps(["status", "showpass", "showreject", "showsave","id","meetingRoomId","passReason","reReason","rows","boxWidth"]);
 let textarea1 = ref(" ");
 let textarea2 = ref(" ");
 let textarea3 = ref(" ");
@@ -204,6 +226,9 @@ let item = ref({});
 
 const passItem = () => {
     pass(props.id)
+     .then(()=>{
+      return save(props.id," ");
+    })
     .then(() => {
       ElMessage({
         type: "success",
@@ -216,7 +241,7 @@ const passItem = () => {
 };
 
 const saveItem = () => {
-      save(props.id," ")
+      save(props.id,textarea2.value)
     .then(
       ()=>{
         ElMessage({
@@ -229,7 +254,7 @@ const saveItem = () => {
   }
 
 const rejectItem = ()=>{
-  cancel(props.id,"")
+  cancel(props.id," ")
   .then(
     ()=>{
       ElMessage({
@@ -248,6 +273,7 @@ onMounted(() => {
     item.value = res.item;
     textarea2.value = res.item.adminOtherInfo
     textarea3.value = res.item.cancelReason
+    textarea1.value = res.item.otherInfo
   });
   getInfoById(props.meetingRoomId).then((res)=>{
     item2.value = res.item
@@ -281,6 +307,8 @@ onMounted(() => {
   justify-content: space-around;
   margin-bottom: 10px;
   flex-flow: column;
+  
+  width: 322px;
   .label {
     flex: 1.5;
     padding-bottom:8px ;
@@ -290,7 +318,7 @@ onMounted(() => {
   }
 }
 .content {
-  height: 567px;
+  height: 580px;
   width: 1000px;
   background-color: #fff;
   // padding-left: 30px;
@@ -351,13 +379,15 @@ onMounted(() => {
       }
       .box2 {
         // flex: 1.5;
-        width: 675px;
+        width: 700px;
+        display: flex;
+        flex-wrap: wrap;
       }
       .btn-area {
         flex: 1;
         display: flex;
         justify-content: flex-end;
-        padding-right: 15px;
+        padding-right: 22px;
       }
     }
     .right {
@@ -381,13 +411,13 @@ onMounted(() => {
         justify-content: space-around;
         align-items: center;
         flex: 1.5;
-        line-height: 30px;
+        line-height: 34px;
         
       }
       .right-2 {
         flex: 1;
         text-align: center;
-        line-height: 30px;
+        line-height: 34px;
       }
       .right-3 {
         flex: 0.8;

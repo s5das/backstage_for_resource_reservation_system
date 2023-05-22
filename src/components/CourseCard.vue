@@ -1,12 +1,14 @@
 <template>
   <div class="course-content" >
-    <div>预约人：{{ course.username }}</div>
-    <div>使用单位：{{ course.useDepartmentName }}</div>
-    <div>主题：{{ course.title }}</div>
-    <div>
+    <div style="font-size:13px">{{ course.title }}</div>
+            <div>预约人：{{ course.username }}</div>
+            <div>使用单位：{{ course.useDepartmentName }}</div>  
+              <div>
       {{ fixNumber(course.start[0]) }}:{{ fixNumber(course.start[1]) }} -
       {{ fixNumber(course.end[0]) }}:{{ fixNumber(course.end[1]) }}
-    </div>
+    </div> 
+  
+
     <!-- <div class="actions clearfix">
       <div @click="removeCourse(index)" class="action delete">
         删除
@@ -51,14 +53,19 @@ export default {
 
 .course-content {
   position: relative;
-  background-color: #3f51b5;
-  color: #fff;
+  background-color: #E9EFFF;
+  color: #2772F0;
   border-radius: 4px;
   height: 95%;
   padding: 4px 6px;
-  font-size: 12px;
+  font-size: 13px;
   transition: all 170ms;
   overflow-y: scroll;
+  border-left: solid 5px;
+}
+.zhidi{
+  position: absolute;
+  bottom: 0px;
 }
 .course-content .actions {
   display: none;

@@ -307,7 +307,7 @@ export default {
 }
 .course-table {
   margin: 0px auto;
-  font-size: 14px;
+  font-size: 15px;
 }
 .menu {
   height: 100%;
@@ -319,9 +319,10 @@ export default {
   z-index: 2;
 }
 .week-table {
-  /* border-bottom: 1px solid #eee;
-  border-top: 1px solid #eee; */
-  height: 100%;
+  border-bottom: 1px solid #eee;
+  /* border-top: 1px solid #eee; */
+  height: 105%;
+  
 }
 .week-table .day {
   text-align: center;
@@ -386,19 +387,21 @@ export default {
 }
 .parts .label {
   position: absolute;
-  top: -1px;
+  top: -8px;
   width: 100%;
-  height: 100%;
+  height: -1px;
   line-height: 1;
-  border-top: 1px solid #eee;
-  padding-top: 4px;
+  /* border-top: 1px solid #eee; */
+  /* padding-top: 4px; */
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #bbb;
+  justify-content: flex-end;
+  padding-right:10px;
+  /* color: #bbb; */
+  z-index: 100;
 }
 .part:last-child {
-  border-bottom: 1px solid #eee;
+  /* border-bottom: 1px solid #eee; */
 }
 .position-relative {
   position: relative;
