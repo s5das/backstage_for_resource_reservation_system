@@ -1,7 +1,6 @@
 <template>
   <div class="course-content" >
-    <div style="font-size:15px">{{ course.title }}</div>
-            <br>
+    <div style="font-size:13px">{{ course.title }}</div>
             <div>预约人：{{ course.username }}</div>
             <div>使用单位：{{ course.useDepartmentName }}</div>  
               <div>

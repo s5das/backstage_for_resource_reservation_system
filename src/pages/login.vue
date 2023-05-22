@@ -3,15 +3,22 @@
   <div class="main">
     <div class="box">
       <div class="title">员工登录</div>
-      <el-form :model="formEl" ref="form" label-width="80px" :inline="false" :rules="rules">
-        <el-form-item label="用户名" prop="username">
+      <el-form :model="formEl" ref="form" :inline="false" :rules="rules">
+        <el-form-item   prop="username" >
+          <span>用户名</span>
           <el-input
+          style="height:46px"
             v-model="formEl.username"
             placeholder="请输入用户名"
           ></el-input>
         </el-form-item>
-        <el-form-item label="密码"  prop="password">
-          <el-input v-model="formEl.password" type="password" placeholder="请输入密码"></el-input>
+        <el-form-item   prop="password">
+          <span>密码</span>
+          <el-input v-model="formEl.password" 
+          type="password" 
+          placeholder="请输入密码"
+          style="height:46px"
+          ></el-input>
         </el-form-item>
         <!-- <el-form-item label="验证码" prop="verify">
           <el-row :gutter="20" >
@@ -27,7 +34,7 @@
           </el-row>
         </el-form-item> -->
         <el-form-item>
-          <el-button type="primary" @click="onSubmit(form)">登录</el-button>
+          <el-button style="width:325px;height:46px;background-color:#2772F0 " type="primary" @click="onSubmit(form)">登录</el-button>
         </el-form-item>
       </el-form>
     </div>
@@ -113,27 +120,52 @@ const onSubmit = async (form) => {
 </script>
 
 <style lang="less" scoped>
+span{
+  font-size: 17px;
+  font-weight: 500;
+}
 .main {
   height: 100vh;
   width: 100vw;
-  background-color: #bbb;
+  // position: relative;
+  // background-color: #bbb;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
-
+  background-image: url('../assets/login.jpg');
+  background-size: cover;
   .box {
     .title{
-    font-size: 18px;
-    font-weight: 600;
-
+      
+    font-size: 20px;
+    font-weight: bold;
+    margin-left: 29px;
   }
-    height: 300px;
-    width: 450px;
+    height: 355px;
+    width: 380px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    align-items: center;
+    // align-items: center;
+    z-index: 100;
+    margin-right: 52px;
   }
 }
+ .main::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 485px;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5); /* 半透明黑色 */
+}
+.el-form-item{
+  width: 325px;
+  margin-left: 29px;
+  display: block;
+}
+
+
 </style>
