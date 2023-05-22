@@ -44,7 +44,7 @@
     </el-table>
 
   </div>
-  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="false" :showsave="false" :showreject="false" />
+  <Showdetail  :status="1" v-if="isshow" @close="isshow=false" @refresh="getinfo" :id="orderId" :meetingRoomId="meetingRoomId" :showpass="false" :showsave="false" :showreject="false" :passReason="false" :reReason="true" :rows="5"/>
   <div class="pagecontroler">
     <el-pagination
       background

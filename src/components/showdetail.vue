@@ -144,40 +144,38 @@
             </div>
 
             <div class="box2">
-              <div class="textarea" style="margin-right: 30px">
+              <div class="textarea" style="margin-right: 30px" v-bind:style="{ width: boxWidth + 'px' }">
                 <div class="label">用户备注：</div>
                 <div class="input">
                   <el-input
                     v-model="textarea1"
-                    :rows="3"
-                    type="textarea"
-                   
+                    :rows="rows"
+                    type="textarea"                 
                   />
                 </div>
               </div>
-                <div class="textarea">
-                  <div class="label">管理员备注：</div>
+                <div class="textarea" v-if="passReason">
+                  <div class="label">通过备注：</div>
                   <div class="input">
                   <el-input
                     v-model="textarea2"
-                    :rows="3"
-                    type="textarea"
-                    
+                    :rows="5"
+                    type="textarea"               
                   />
                   </div>
                 </div>
-                <div class="textarea">
+                <div class="textarea" v-if="reReason">
                   <div class="label">驳回理由：</div>
                   <div class="input">
                  <el-input
                     v-model="textarea3"
-                    :rows="3"
+                    :rows="5"
                     type="textarea"
                     
                   />
                 </div>
                 </div>
-                <div class="btn-area" style="margin-top:55px">
+                <div class="btn-area" style="margin-top:15px">
               <el-button
                 type="primary"
                 size="default"
@@ -219,7 +217,7 @@ import { CloseBold, Picture as IconPicture } from "@element-plus/icons-vue";
 import { getDetail, pass, save, cancel } from "../http/api/order";
 import {getInfoById} from "../http/api/meetingRoom"
 const emits = defineEmits(["close",'refresh']);
-const props = defineProps(["status", "showpass", "showreject", "showsave","id","meetingRoomId"]);
+const props = defineProps(["status", "showpass", "showreject", "showsave","id","meetingRoomId","passReason","reReason","rows","boxWidth"]);
 let textarea1 = ref(" ");
 let textarea2 = ref(" ");
 let textarea3 = ref(" ");
@@ -229,7 +227,7 @@ let item = ref({});
 const passItem = () => {
     pass(props.id)
      .then(()=>{
-      return save(props.id,textarea2.value);
+      return save(props.id," ");
     })
     .then(() => {
       ElMessage({
@@ -256,7 +254,7 @@ const saveItem = () => {
   }
 
 const rejectItem = ()=>{
-  cancel(props.id,textarea3.value)
+  cancel(props.id," ")
   .then(
     ()=>{
       ElMessage({
@@ -310,7 +308,7 @@ onMounted(() => {
   margin-bottom: 10px;
   flex-flow: column;
   
-  width: 321px;
+  width: 322px;
   .label {
     flex: 1.5;
     padding-bottom:8px ;
@@ -389,7 +387,7 @@ onMounted(() => {
         flex: 1;
         display: flex;
         justify-content: flex-end;
-        padding-right: 15px;
+        padding-right: 22px;
       }
     }
     .right {
