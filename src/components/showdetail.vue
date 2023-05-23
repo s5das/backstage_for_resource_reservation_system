@@ -74,42 +74,15 @@
     
           </div>
           <div class="left">
-            <div class="box1">
-            
-              <div  style='width:286px'>
-                <div class="hengzhi">
+            <div class="box1">   
+              <div>
+                <div style="display:flex">
+                <div class="hengzhi" style="width:286px">
                   <div class="table"> 预约单号</div>
                   <div class="text">{{ item.orderNo }}</div>
                 </div>
-
-                <div class="hengzhi">
-                <div class="table"> 发起时间 </div>
-                <div class="text">{{ item.createTime }}</div>
-                </div>
-
-                <div class="hengzhi">
-                  <div class="table"> 预约人 </div>
-                  <div class="text">{{ item.username }}</div>
-                </div>
-
-                <div class="hengzhi">
-                  <div class="table"> 学号 </div>
-                  <div class="text">{{ item.userId }}</div>
-                </div>
-
-                <div class="hengzhi">
-                  <div class="table"> 归属组织 </div>
-                  <div class="text">{{ item.departmentName }}</div>
-                </div>
-
-                <div class="hengzhi1">
-                  <div   class="table"> 联系方式 </div>
-                  <div class="text">{{ item.mobile }}</div>
-                </div>
-              </div>
-              <div  style='width:386px'>
-                <div class="hengzhi">
-                  <div class="table"> 预约单状态 </div>
+                  <div class="hengzhi" style='width:386px'>
+                  <div class="table" > 预约单状态 </div>
                   <div class="text">{{
                     item.status == "0"
                       ? "待审批"
@@ -120,27 +93,76 @@
                       : "已取消"
                   }}</div>
                 </div>
-                <div class="hengzhi">
+                </div>
+               <div style="display:flex">
+                <div class="hengzhi" style='width:286px'>
+                <div class="table"> 发起时间 </div>
+                <div class="text">{{ item.createTime }}</div>
+
+                </div>
+                  <div class="hengzhi" style='width:386px'>
                   <div class="table"> 使用单位 </div>
                   <div class="text">{{ item.useDepartmentName }}</div>
                 </div>
-                <div class="hengzhi">
+
+                </div>
+
+                <div style="display:flex">
+                <div class="hengzhi" style='width:286px'>
+                  <div class="table"> 预约人 </div>
+                  <div class="text">{{ item.username }}</div>
+                </div>
+
+                <div class="hengzhi" style='width:386px'>
                   <div class="table"> 预约会议室 </div>
                   <div class="text">{{ item.roomName }}</div>
                 </div>
-                <div class="hengzhi">
+
+                </div>
+
+                <div style="display:flex">
+                <div class="hengzhi" style='width:286px'>
+                  <div class="table"> 学号 </div>
+                  <div class="text">{{ item.userId }}</div>
+                    </div>
+
+                  <div class="hengzhi" style='width:386px'>
                   <div class="table"> 预约时间 </div>
                   <div class="text">{{ item.startTime + "-" + item.endTime }}</div>
+                </div>  
+                  </div>
+
+                
+                <div style="display:flex">
+                <div class="hengzhi" style='width:286px'>
+                  <div class="table"> 归属组织 </div>
+                  <div class="text">{{ item.departmentName }}</div>
                 </div>
-                <div class="hengzhi">
+                <div class="hengzhi" style='width:386px'>
                   <div class="table"> 使用人数 </div>
                   <div class="text">{{ item.userNumber }}</div>
                 </div>
-                <div class="hengzhi">
+                  </div>
+
+                 <div style="display:flex">
+                <div class="hengzhi" style='width:286px'>
+                  <div   class="table"> 联系方式 </div>
+                  <div class="text">{{ item.mobile }}</div>
+                </div>
+                   <div class="hengzhi" style='width:386px'>
                   <div class="table"> 会议室主题 </div>
                   <div class="text">{{ item.title }}</div>
                 </div>
+                 </div>
               </div>
+              <!-- <div  style='width:386px'>
+     
+              
+                
+      
+                
+             
+              </div> -->
             </div>
 
             <div class="box2">
@@ -175,7 +197,7 @@
                   />
                 </div>
                 </div>
-                <div class="btn-area" style="margin-top:15px">
+                <div class="btn-area" >
               <el-button
                 type="primary"
                 size="default"
@@ -305,12 +327,12 @@ onMounted(() => {
 .textarea {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 10px;
+  // margin-bottom: 10px;
   flex-flow: column;
   
   width: 322px;
   .label {
-    flex: 1.5;
+    // flex: 1.5;
     padding-bottom:8px ;
   }
   .input {
@@ -318,7 +340,7 @@ onMounted(() => {
   }
 }
 .content {
-  height: 580px;
+  height: 605px;
   width: 1000px;
   background-color: #fff;
   // padding-left: 30px;
@@ -366,19 +388,13 @@ onMounted(() => {
             flex-direction: row;
           
           }
-          .hengzhi1{
-             display: flex;
-            flex-direction: row;
-            height: calc(100% - 205px);
-            
-          }
          border: solid 1px #666666;
-            margin:-1px;
-          line-height: 40px;
+          margin:-1px;
+          line-height: 39px;
         }
       }
       .box2 {
-        // flex: 1.5;
+        flex: 1.5;
         width: 700px;
         display: flex;
         flex-wrap: wrap;
@@ -386,6 +402,7 @@ onMounted(() => {
       .btn-area {
         flex: 1;
         display: flex;
+        flex-grow: 1;
         justify-content: flex-end;
         padding-right: 22px;
       }
@@ -411,13 +428,13 @@ onMounted(() => {
         justify-content: space-around;
         align-items: center;
         flex: 1.5;
-        line-height: 34px;
+        line-height: 36px;
         
       }
       .right-2 {
         flex: 1;
         text-align: center;
-        line-height: 34px;
+        line-height: 36px;
       }
       .right-3 {
         flex: 0.8;
