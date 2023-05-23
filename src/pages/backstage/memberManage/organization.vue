@@ -261,7 +261,7 @@ getinfo();
   width: 250px;
 }
 .table-area {
-  height: 58vh;
+  height: 55vh;
   overflow-y: scroll;
  
 }

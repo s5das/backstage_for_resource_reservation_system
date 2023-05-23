@@ -157,7 +157,7 @@ onMounted(() => {
   margin: auto;
 }
 .table-area{
-  height: 400px;
+  height: 55vh;
   overflow-y: scroll;
 }
 </style>
