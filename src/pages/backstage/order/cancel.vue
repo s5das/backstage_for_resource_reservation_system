@@ -139,7 +139,7 @@ onMounted(() => {
   right: 0;
 }
 .table-area{
-  height: 400px;
+  height: 55vh;
   overflow-y: scroll;
 }
 </style>
